@@ -13,13 +13,15 @@ namespace PLCSimConnector
         {
         }
         public PCS7Project(string projectFile){
+            
             Project = new Step7ProjectV5(projectFile,false);
             File = projectFile;
         }
         public String File { 
             get { return pcs7ProjectFile; }
             set 
-            { pcs7ProjectFile = value;
+            { 
+                pcs7ProjectFile = value;
                 Project = new Step7ProjectV5(value, false);
             }
         }

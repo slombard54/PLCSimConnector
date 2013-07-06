@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace PLCSimSandbox
         {
             Console.WriteLine("Sandbox app to test PLCSimConnector.dll");
             var c = new PLCSim();
+            var plc = new SimulatedPLC(c);
             Console.WriteLine(c.GetState());
             var p = new PCS7Project("C:\\Program Files (x86)\\SIEMENS\\Step7\\S7Proj\\KING_M_1\\MID_CTRL\\MID_CTRL.s7p");
             Console.WriteLine("Press Any Key to Continue...");
@@ -29,6 +31,8 @@ namespace PLCSimSandbox
                         }
                     case 'r':
                         {
+                            plc.OutputImageOffestRequest(70);
+                            plc.UpdateImages();
                             object z = c.ReadOutputImage(10, 20);
                             break;
                         }
@@ -51,7 +55,6 @@ namespace PLCSimSandbox
                             {
                                 Console.WriteLine(s);
                             }
-                            break;
                         break;
                     default:
                         loop = false;

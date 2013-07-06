@@ -1,47 +1,73 @@
 ﻿using System;
-using System.Globalization;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using S7PROSIMLib;
-
 
 namespace PLCSimConnector
 {
-
-    public class PLCSim : S7ProSimClass, IDisposable
+    public class SimulatedPLC : IDisposable
     {
+        private PLCSim simPLC;
+        private MemoryStream outputImageBuffer;
+        private MemoryStream inputImageBuffer;
+        private int maxOutputOffset;
         private bool disposed;
 
 
-
-        public PLCSim()
+        public SimulatedPLC() : this(new PLCSim())
         {
-            base.ConnectionError += ps_ConnectionError;
         }
 
-        void ps_ConnectionError(string controlEngine, int error)
+        public SimulatedPLC(IS7ProSim plcSimObject)
         {
-            throw new ApplicationException(error.ToString(CultureInfo.InvariantCulture));
+            simPLC = plcSimObject as PLCSim;
+            
+            outputImageBuffer = new MemoryStream();
+            inputImageBuffer = new MemoryStream();
+           
         }
 
+        
+        public MemoryStream OutputImageBuffer
+        {
+            get { return outputImageBuffer; }
+            set { outputImageBuffer = value; }
+        }
 
+        public MemoryStream InputImageBuffer
+        {
+            get { return inputImageBuffer; }
+            set { inputImageBuffer = value; }
+        }
 
-        public object ReadOutputImage(int startIndex, int elementsToRead, ImageDataTypeConstants dataType)
+        public void OutputImageOffestRequest(int offset)
+        {
+            if (offset > outputImageBuffer.Capacity)
+            {
+                outputImageBuffer.Capacity = offset;
+            }
+            if (offset > maxOutputOffset)
+            {
+                maxOutputOffset = offset;
+            }
+
+        }
+
+        public void UpdateImages()
         {
             object pData = null;
-            ReadOutputImage(startIndex, elementsToRead, dataType, ref pData);
-            return pData;
-        }
+            simPLC.ReadOutputImage(0, maxOutputOffset, ImageDataTypeConstants.S7Byte, ref pData);
+            var byteData = (byte[])pData;
+            outputImageBuffer.Write(byteData, 0, byteData.GetLength(0));
 
-        public object ReadOutputImage( int startIndex, int elementsToRead)
-        {
-            object pData = null;
-            ReadOutputImage(startIndex, elementsToRead, ImageDataTypeConstants.S7Byte, ref pData);
-            return pData;
+            pData = inputImageBuffer.GetBuffer();
+            simPLC.WriteInputImage(0, ref pData); 
         }
-
-        // It gives your base class the opportunity to finalize.
+               // It gives your base class the opportunity to finalize.
         // Do not provide destructors in types derived from this class.
-        ~PLCSim()
+        ~SimulatedPLC()
         {
             Dispose(false);
         }
@@ -75,7 +101,8 @@ namespace PLCSimConnector
                 {
                     // Dispose managed resources.
                     ////component.Dispose();
-                    Disconnect();
+                    outputImageBuffer.Dispose();
+                    inputImageBuffer.Dispose();
                 }
 		 
                 // Call the appropriate methods to clean up 
@@ -88,27 +115,7 @@ namespace PLCSimConnector
             }
             disposed = true;         
         }
+
+
     }
 }
-
-/*
- *  public static void Set(ref byte aByte, int pos, bool value)
- {
- if (value)
- {
-  //left-shift 1, then bitwise OR
-  aByte = (byte)(aByte | (1 << pos));
- }
- else
- {
-  //left-shift 1, then take complement, then bitwise AND
-  aByte = (byte)(aByte & ~(1 << pos));
- }
- }
- 
- public static bool Get(byte aByte, int pos)
- {
-  //left-shift 1, then bitwise AND, then check for non-zero
-  return ((aByte & (1 << pos)) != 0);
- }
-*/

@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="PCS7Project.cs" />
     <Compile Include="PLCSim.cs" />
+    <Compile Include="SimulatedPLC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
