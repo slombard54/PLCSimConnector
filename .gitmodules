@@ -1,3 +1,3 @@
-[submodule "MATLAB"]
-	path = MATLAB
-	url = C:/Users/slombard.KINGDOM/Documents/MATLAB/PLCSim
+[submodule "PLCSimtoSimulink"]
+	path = PLCSimtoSimulink
+	url = https://github.com/slombard54/PLCSimtoSimulink.git
