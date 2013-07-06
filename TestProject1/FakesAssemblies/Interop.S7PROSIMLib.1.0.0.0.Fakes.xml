@@ -1,0 +1,692 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Interop.S7PROSIMLib.1.0.0.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.QualityTools.Testing.Fakes.Delegates.InteropS7PROSIMLibDelegates">
+            <summary>Contains custom delegates used for the stubs and shims of Interop.S7PROSIMLib</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper">
+            <summary>Shim type of S7PROSIMLib.IS7ProSimEvents_SinkHelper</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.#ctor(S7PROSIMLib.IS7ProSimEvents_SinkHelper)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.Bind(S7PROSIMLib.IS7ProSimEvents)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.ConnectionErrorStringInt32">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.ConnectionError(String , Int32 )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.Constructor">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.IS7ProSimEvents_SinkHelper()</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.PLCSimStateChangedString">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.PLCSimStateChanged(String )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.PauseStateChangedString">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.PauseStateChanged(String )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.ScanFinishedObject">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.ScanFinished(Object )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.ScanModeChangedString">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.ScanModeChanged(String )</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.AllInstances.ConnectionErrorStringInt32">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.ConnectionError(String , Int32 )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.AllInstances.PLCSimStateChangedString">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.PLCSimStateChanged(String )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.AllInstances.PauseStateChangedString">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.PauseStateChanged(String )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.AllInstances.ScanFinishedObject">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.ScanFinished(Object )</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimIS7ProSimEvents_SinkHelper.AllInstances.ScanModeChangedString">
+            <summary>Sets the shim of IS7ProSimEvents_SinkHelper.ScanModeChanged(String )</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.ShimS7ProSimClass">
+            <summary>Shim type of S7PROSIMLib.S7ProSimClass</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimS7ProSimClass.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimS7ProSimClass.#ctor(S7PROSIMLib.S7ProSimClass)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimS7ProSimClass.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimS7ProSimClass.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimS7ProSimClass.Bind(S7PROSIMLib.IS7ProSim)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimS7ProSimClass.Bind(S7PROSIMLib.IS7ProSimEvents_Event)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.ShimS7ProSimClass.Bind(S7PROSIMLib.S7ProSim)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.ShimS7ProSimClass.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.ShimS7ProSimClass.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.StubIS7ProSim">
+            <summary>Stub type of S7PROSIMLib.IS7ProSim</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.#ctor">
+            <summary>Initializes a new instance of type StubIS7ProSim</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.BeginScanNotify">
+            <summary>Sets the stub of IS7ProSim.BeginScanNotify()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.Connect">
+            <summary>Sets the stub of IS7ProSim.Connect()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ConnectExtInt32">
+            <summary>Sets the stub of IS7ProSim.ConnectExt(Int32 InstanceNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.Continue">
+            <summary>Sets the stub of IS7ProSim.Continue()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.Disconnect">
+            <summary>Sets the stub of IS7ProSim.Disconnect()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.EndScanNotify">
+            <summary>Sets the stub of IS7ProSim.EndScanNotify()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ExecuteNScansInt32">
+            <summary>Sets the stub of IS7ProSim.ExecuteNScans(Int32 NScanNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ExecuteNmsScanInt32">
+            <summary>Sets the stub of IS7ProSim.ExecuteNmsScan(Int32 MsNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ExecuteSingleScan">
+            <summary>Sets the stub of IS7ProSim.ExecuteSingleScan()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.GetPauseState">
+            <summary>Sets the stub of IS7ProSim.GetPauseState()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.GetScanMode">
+            <summary>Sets the stub of IS7ProSim.GetScanMode()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.GetStartUpSwitch">
+            <summary>Sets the stub of IS7ProSim.GetStartUpSwitch()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.GetState">
+            <summary>Sets the stub of IS7ProSim.GetState()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.HotStartWithSavedValuesInt32">
+            <summary>Sets the stub of IS7ProSim.HotStartWithSavedValues(Int32 val)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.Pause">
+            <summary>Sets the stub of IS7ProSim.Pause()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ReadDataBlockValueInt32Int32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ReadFlagValueInt32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadFlagValue(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ReadOutputImageInt32Int32ImageDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadOutputImage(Int32 StartIndex, Int32 ElementsToRead, ImageDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.ReadOutputPointInt32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadOutputPoint(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#BeginScanNotify">
+            <summary>Sets the stub of IS7ProSim.BeginScanNotify()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Connect">
+            <summary>Sets the stub of IS7ProSim.Connect()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ConnectExt(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.ConnectExt(Int32 InstanceNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Continue">
+            <summary>Sets the stub of IS7ProSim.Continue()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Disconnect">
+            <summary>Sets the stub of IS7ProSim.Disconnect()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#EndScanNotify">
+            <summary>Sets the stub of IS7ProSim.EndScanNotify()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ExecuteNScans(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.ExecuteNScans(Int32 NScanNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ExecuteNmsScan(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.ExecuteNmsScan(Int32 MsNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ExecuteSingleScan">
+            <summary>Sets the stub of IS7ProSim.ExecuteSingleScan()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetPauseState">
+            <summary>Sets the stub of IS7ProSim.GetPauseState()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetScanMode">
+            <summary>Sets the stub of IS7ProSim.GetScanMode()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetStartUpSwitch">
+            <summary>Sets the stub of IS7ProSim.GetStartUpSwitch()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetState">
+            <summary>Sets the stub of IS7ProSim.GetState()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#HotStartWithSavedValues(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.HotStartWithSavedValues(Int32 val)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Pause">
+            <summary>Sets the stub of IS7ProSim.Pause()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadDataBlockValue(System.Int32,System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadFlagValue(System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadFlagValue(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadOutputImage(System.Int32,System.Int32,S7PROSIMLib.ImageDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadOutputImage(Int32 StartIndex, Int32 ElementsToRead, ImageDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadOutputPoint(System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadOutputPoint(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SavePLC(System.String)">
+            <summary>Sets the stub of IS7ProSim.SavePLC(String FileName)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SetScanMode(S7PROSIMLib.ScanModeConstants)">
+            <summary>Sets the stub of IS7ProSim.SetScanMode(ScanModeConstants newVal)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SetStartUpSwitch(S7PROSIMLib.RestartSwitchPositionConstants)">
+            <summary>Sets the stub of IS7ProSim.SetStartUpSwitch(RestartSwitchPositionConstants postion)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SetState(System.String)">
+            <summary>Sets the stub of IS7ProSim.SetState(String newVal)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#StartPLCSim(System.String)">
+            <summary>Sets the stub of IS7ProSim.StartPLCSim(String plcFile)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#StartPLCSimExt(System.String)">
+            <summary>Sets the stub of IS7ProSim.StartPLCSimExt(String plcFile)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteDataBlockValue(System.Int32,System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteFlagValue(System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteFlagValue(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteInputImage(System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteInputImage(Int32 StartIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteInputPoint(System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteInputPoint(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.SavePLCString">
+            <summary>Sets the stub of IS7ProSim.SavePLC(String FileName)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.SetScanModeScanModeConstants">
+            <summary>Sets the stub of IS7ProSim.SetScanMode(ScanModeConstants newVal)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.SetStartUpSwitchRestartSwitchPositionConstants">
+            <summary>Sets the stub of IS7ProSim.SetStartUpSwitch(RestartSwitchPositionConstants postion)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.SetStateString">
+            <summary>Sets the stub of IS7ProSim.SetState(String newVal)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.StartPLCSimExtString">
+            <summary>Sets the stub of IS7ProSim.StartPLCSimExt(String plcFile)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.StartPLCSimString">
+            <summary>Sets the stub of IS7ProSim.StartPLCSim(String plcFile)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.WriteDataBlockValueInt32Int32Int32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.WriteFlagValueInt32Int32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteFlagValue(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.WriteInputImageInt32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteInputImage(Int32 StartIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSim.WriteInputPointInt32Int32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteInputPoint(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.StubIS7ProSimEvents">
+            <summary>Stub type of S7PROSIMLib.IS7ProSimEvents</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSimEvents.#ctor">
+            <summary>Initializes a new instance of type StubIS7ProSimEvents</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSimEvents.ConnectionErrorStringInt32">
+            <summary>Sets the stub of IS7ProSimEvents.ConnectionError(String ControlEngine, Int32 Error)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSimEvents.PLCSimStateChangedString">
+            <summary>Sets the stub of IS7ProSimEvents.PLCSimStateChanged(String NewState)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSimEvents.PauseStateChangedString">
+            <summary>Sets the stub of IS7ProSimEvents.PauseStateChanged(String NewState)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSimEvents.is7prosiml::S7PROSIMLib#IS7ProSimEvents#ConnectionError(System.String,System.Int32)">
+            <summary>Sets the stub of IS7ProSimEvents.ConnectionError(String ControlEngine, Int32 Error)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSimEvents.is7prosiml::S7PROSIMLib#IS7ProSimEvents#PLCSimStateChanged(System.String)">
+            <summary>Sets the stub of IS7ProSimEvents.PLCSimStateChanged(String NewState)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSimEvents.is7prosiml::S7PROSIMLib#IS7ProSimEvents#PauseStateChanged(System.String)">
+            <summary>Sets the stub of IS7ProSimEvents.PauseStateChanged(String NewState)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSimEvents.is7prosiml::S7PROSIMLib#IS7ProSimEvents#ScanFinished(System.Object)">
+            <summary>Sets the stub of IS7ProSimEvents.ScanFinished(Object ScanInfo)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSimEvents.is7prosiml::S7PROSIMLib#IS7ProSimEvents#ScanModeChanged(System.String)">
+            <summary>Sets the stub of IS7ProSimEvents.ScanModeChanged(String NewState)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSimEvents.ScanFinishedObject">
+            <summary>Sets the stub of IS7ProSimEvents.ScanFinished(Object ScanInfo)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubIS7ProSimEvents.ScanModeChangedString">
+            <summary>Sets the stub of IS7ProSimEvents.ScanModeChanged(String NewState)</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.StubIS7ProSimEvents_Event">
+            <summary>Stub type of S7PROSIMLib.IS7ProSimEvents_Event</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubIS7ProSimEvents_Event.#ctor">
+            <summary>Initializes a new instance of type StubIS7ProSimEvents_Event</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.StubS7ProSim">
+            <summary>Stub type of S7PROSIMLib.S7ProSim</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.#ctor">
+            <summary>Initializes a new instance of type StubS7ProSim</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.BeginScanNotify">
+            <summary>Sets the stub of IS7ProSim.BeginScanNotify()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.Connect">
+            <summary>Sets the stub of IS7ProSim.Connect()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ConnectExtInt32">
+            <summary>Sets the stub of IS7ProSim.ConnectExt(Int32 InstanceNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.Continue">
+            <summary>Sets the stub of IS7ProSim.Continue()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.Disconnect">
+            <summary>Sets the stub of IS7ProSim.Disconnect()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.EndScanNotify">
+            <summary>Sets the stub of IS7ProSim.EndScanNotify()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ExecuteNScansInt32">
+            <summary>Sets the stub of IS7ProSim.ExecuteNScans(Int32 NScanNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ExecuteNmsScanInt32">
+            <summary>Sets the stub of IS7ProSim.ExecuteNmsScan(Int32 MsNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ExecuteSingleScan">
+            <summary>Sets the stub of IS7ProSim.ExecuteSingleScan()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.GetPauseState">
+            <summary>Sets the stub of IS7ProSim.GetPauseState()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.GetScanMode">
+            <summary>Sets the stub of IS7ProSim.GetScanMode()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.GetStartUpSwitch">
+            <summary>Sets the stub of IS7ProSim.GetStartUpSwitch()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.GetState">
+            <summary>Sets the stub of IS7ProSim.GetState()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.HotStartWithSavedValuesInt32">
+            <summary>Sets the stub of IS7ProSim.HotStartWithSavedValues(Int32 val)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.Pause">
+            <summary>Sets the stub of IS7ProSim.Pause()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ReadDataBlockValueInt32Int32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ReadFlagValueInt32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadFlagValue(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ReadOutputImageInt32Int32ImageDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadOutputImage(Int32 StartIndex, Int32 ElementsToRead, ImageDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.ReadOutputPointInt32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of IS7ProSim.ReadOutputPoint(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#BeginScanNotify">
+            <summary>Sets the stub of IS7ProSim.BeginScanNotify()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Connect">
+            <summary>Sets the stub of IS7ProSim.Connect()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ConnectExt(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.ConnectExt(Int32 InstanceNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Continue">
+            <summary>Sets the stub of IS7ProSim.Continue()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Disconnect">
+            <summary>Sets the stub of IS7ProSim.Disconnect()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#EndScanNotify">
+            <summary>Sets the stub of IS7ProSim.EndScanNotify()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ExecuteNScans(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.ExecuteNScans(Int32 NScanNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ExecuteNmsScan(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.ExecuteNmsScan(Int32 MsNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ExecuteSingleScan">
+            <summary>Sets the stub of IS7ProSim.ExecuteSingleScan()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetPauseState">
+            <summary>Sets the stub of IS7ProSim.GetPauseState()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetScanMode">
+            <summary>Sets the stub of IS7ProSim.GetScanMode()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetStartUpSwitch">
+            <summary>Sets the stub of IS7ProSim.GetStartUpSwitch()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#GetState">
+            <summary>Sets the stub of IS7ProSim.GetState()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#HotStartWithSavedValues(System.Int32)">
+            <summary>Sets the stub of IS7ProSim.HotStartWithSavedValues(Int32 val)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#Pause">
+            <summary>Sets the stub of IS7ProSim.Pause()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadDataBlockValue(System.Int32,System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadFlagValue(System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadFlagValue(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadOutputImage(System.Int32,System.Int32,S7PROSIMLib.ImageDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadOutputImage(Int32 StartIndex, Int32 ElementsToRead, ImageDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#ReadOutputPoint(System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.ReadOutputPoint(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SavePLC(System.String)">
+            <summary>Sets the stub of IS7ProSim.SavePLC(String FileName)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SetScanMode(S7PROSIMLib.ScanModeConstants)">
+            <summary>Sets the stub of IS7ProSim.SetScanMode(ScanModeConstants newVal)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SetStartUpSwitch(S7PROSIMLib.RestartSwitchPositionConstants)">
+            <summary>Sets the stub of IS7ProSim.SetStartUpSwitch(RestartSwitchPositionConstants postion)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#SetState(System.String)">
+            <summary>Sets the stub of IS7ProSim.SetState(String newVal)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#StartPLCSim(System.String)">
+            <summary>Sets the stub of IS7ProSim.StartPLCSim(String plcFile)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#StartPLCSimExt(System.String)">
+            <summary>Sets the stub of IS7ProSim.StartPLCSimExt(String plcFile)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteDataBlockValue(System.Int32,System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteFlagValue(System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteFlagValue(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteInputImage(System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteInputImage(Int32 StartIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSim.is7prosiml::S7PROSIMLib#IS7ProSim#WriteInputPoint(System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of IS7ProSim.WriteInputPoint(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.SavePLCString">
+            <summary>Sets the stub of IS7ProSim.SavePLC(String FileName)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.SetScanModeScanModeConstants">
+            <summary>Sets the stub of IS7ProSim.SetScanMode(ScanModeConstants newVal)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.SetStartUpSwitchRestartSwitchPositionConstants">
+            <summary>Sets the stub of IS7ProSim.SetStartUpSwitch(RestartSwitchPositionConstants postion)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.SetStateString">
+            <summary>Sets the stub of IS7ProSim.SetState(String newVal)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.StartPLCSimExtString">
+            <summary>Sets the stub of IS7ProSim.StartPLCSimExt(String plcFile)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.StartPLCSimString">
+            <summary>Sets the stub of IS7ProSim.StartPLCSim(String plcFile)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.WriteDataBlockValueInt32Int32Int32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.WriteFlagValueInt32Int32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteFlagValue(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.WriteInputImageInt32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteInputImage(Int32 StartIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSim.WriteInputPointInt32Int32ObjectRef">
+            <summary>Sets the stub of IS7ProSim.WriteInputPoint(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="T:S7PROSIMLib.Fakes.StubS7ProSimClass">
+            <summary>Stub type of S7PROSIMLib.S7ProSimClass</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.BeginScanNotify">
+            <summary>Sets the stub of S7ProSimClass.BeginScanNotify()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.BeginScanNotify01">
+            <summary>Sets the stub of S7ProSimClass.BeginScanNotify()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.Connect">
+            <summary>Sets the stub of S7ProSimClass.Connect()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.Connect01">
+            <summary>Sets the stub of S7ProSimClass.Connect()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ConnectExt(System.Int32)">
+            <summary>Sets the stub of S7ProSimClass.ConnectExt(Int32 InstanceNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ConnectExtInt32">
+            <summary>Sets the stub of S7ProSimClass.ConnectExt(Int32 InstanceNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.Continue">
+            <summary>Sets the stub of S7ProSimClass.Continue()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.Continue01">
+            <summary>Sets the stub of S7ProSimClass.Continue()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.Disconnect">
+            <summary>Sets the stub of S7ProSimClass.Disconnect()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.Disconnect01">
+            <summary>Sets the stub of S7ProSimClass.Disconnect()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.EndScanNotify">
+            <summary>Sets the stub of S7ProSimClass.EndScanNotify()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.EndScanNotify01">
+            <summary>Sets the stub of S7ProSimClass.EndScanNotify()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ExecuteNScans(System.Int32)">
+            <summary>Sets the stub of S7ProSimClass.ExecuteNScans(Int32 NScanNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ExecuteNScansInt32">
+            <summary>Sets the stub of S7ProSimClass.ExecuteNScans(Int32 NScanNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ExecuteNmsScan(System.Int32)">
+            <summary>Sets the stub of S7ProSimClass.ExecuteNmsScan(Int32 MsNumber)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ExecuteNmsScanInt32">
+            <summary>Sets the stub of S7ProSimClass.ExecuteNmsScan(Int32 MsNumber)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ExecuteSingleScan">
+            <summary>Sets the stub of S7ProSimClass.ExecuteSingleScan()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ExecuteSingleScan01">
+            <summary>Sets the stub of S7ProSimClass.ExecuteSingleScan()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.GetPauseState">
+            <summary>Sets the stub of S7ProSimClass.GetPauseState()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.GetPauseState01">
+            <summary>Sets the stub of S7ProSimClass.GetPauseState()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.GetScanMode">
+            <summary>Sets the stub of S7ProSimClass.GetScanMode()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.GetScanMode01">
+            <summary>Sets the stub of S7ProSimClass.GetScanMode()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.GetStartUpSwitch">
+            <summary>Sets the stub of S7ProSimClass.GetStartUpSwitch()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.GetStartUpSwitch01">
+            <summary>Sets the stub of S7ProSimClass.GetStartUpSwitch()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.GetState">
+            <summary>Sets the stub of S7ProSimClass.GetState()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.GetState01">
+            <summary>Sets the stub of S7ProSimClass.GetState()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.HotStartWithSavedValues(System.Int32)">
+            <summary>Sets the stub of S7ProSimClass.HotStartWithSavedValues(Int32 val)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.HotStartWithSavedValuesInt32">
+            <summary>Sets the stub of S7ProSimClass.HotStartWithSavedValues(Int32 val)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.InitializeStub">
+            <summary>Initializes a new instance of type StubS7ProSimClass</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.Pause">
+            <summary>Sets the stub of S7ProSimClass.Pause()</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.Pause01">
+            <summary>Sets the stub of S7ProSimClass.Pause()</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadDataBlockValue(System.Int32,System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.ReadDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadDataBlockValueInt32Int32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of S7ProSimClass.ReadDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadFlagValue(System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.ReadFlagValue(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadFlagValueInt32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of S7ProSimClass.ReadFlagValue(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadOutputImage(System.Int32,System.Int32,S7PROSIMLib.ImageDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.ReadOutputImage(Int32 StartIndex, Int32 ElementsToRead, ImageDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadOutputImageInt32Int32ImageDataTypeConstantsObjectRef">
+            <summary>Sets the stub of S7ProSimClass.ReadOutputImage(Int32 StartIndex, Int32 ElementsToRead, ImageDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadOutputPoint(System.Int32,System.Int32,S7PROSIMLib.PointDataTypeConstants,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.ReadOutputPoint(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.ReadOutputPointInt32Int32PointDataTypeConstantsObjectRef">
+            <summary>Sets the stub of S7ProSimClass.ReadOutputPoint(Int32 ByteIndex, Int32 BitIndex, PointDataTypeConstants DataType, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.SavePLC(System.String)">
+            <summary>Sets the stub of S7ProSimClass.SavePLC(String FileName)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.SavePLCString">
+            <summary>Sets the stub of S7ProSimClass.SavePLC(String FileName)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.SetScanMode(S7PROSIMLib.ScanModeConstants)">
+            <summary>Sets the stub of S7ProSimClass.SetScanMode(ScanModeConstants newVal)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.SetScanModeScanModeConstants">
+            <summary>Sets the stub of S7ProSimClass.SetScanMode(ScanModeConstants newVal)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.SetStartUpSwitch(S7PROSIMLib.RestartSwitchPositionConstants)">
+            <summary>Sets the stub of S7ProSimClass.SetStartUpSwitch(RestartSwitchPositionConstants postion)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.SetStartUpSwitchRestartSwitchPositionConstants">
+            <summary>Sets the stub of S7ProSimClass.SetStartUpSwitch(RestartSwitchPositionConstants postion)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.SetState(System.String)">
+            <summary>Sets the stub of S7ProSimClass.SetState(String newVal)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.SetStateString">
+            <summary>Sets the stub of S7ProSimClass.SetState(String newVal)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.StartPLCSim(System.String)">
+            <summary>Sets the stub of S7ProSimClass.StartPLCSim(String plcFile)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.StartPLCSimExt(System.String)">
+            <summary>Sets the stub of S7ProSimClass.StartPLCSimExt(String plcFile)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.StartPLCSimExtString">
+            <summary>Sets the stub of S7ProSimClass.StartPLCSimExt(String plcFile)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.StartPLCSimString">
+            <summary>Sets the stub of S7ProSimClass.StartPLCSim(String plcFile)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteDataBlockValue(System.Int32,System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.WriteDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteDataBlockValueInt32Int32Int32ObjectRef">
+            <summary>Sets the stub of S7ProSimClass.WriteDataBlockValue(Int32 BlockNum, Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteFlagValue(System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.WriteFlagValue(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteFlagValueInt32Int32ObjectRef">
+            <summary>Sets the stub of S7ProSimClass.WriteFlagValue(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteInputImage(System.Int32,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.WriteInputImage(Int32 StartIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteInputImageInt32ObjectRef">
+            <summary>Sets the stub of S7ProSimClass.WriteInputImage(Int32 StartIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="M:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteInputPoint(System.Int32,System.Int32,System.Object@)">
+            <summary>Sets the stub of S7ProSimClass.WriteInputPoint(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="F:S7PROSIMLib.Fakes.StubS7ProSimClass.WriteInputPointInt32Int32ObjectRef">
+            <summary>Sets the stub of S7ProSimClass.WriteInputPoint(Int32 ByteIndex, Int32 BitIndex, Object&amp; pData)</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.StubS7ProSimClass.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.StubS7ProSimClass.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:S7PROSIMLib.Fakes.StubS7ProSimClass.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+    </members>
+</doc>

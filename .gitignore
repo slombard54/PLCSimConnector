@@ -1,6 +1,2 @@
 *.suo
-*.suo
-/TestProject1
-/Local.testsettings
 /PLCSimConnector.vsmdi
-/TraceAndTestImpact.testsettings
