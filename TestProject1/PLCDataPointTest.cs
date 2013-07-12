@@ -1,17 +1,19 @@
 ﻿using PLCSimConnector;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using S7PROSIMLib;
+using System;
+using System.IO;
+using PLCSimConnector.DataPoints;
 
 namespace TestProject1
 {
     
     
     /// <summary>
-    ///This is a test class for PLCSimTest and is intended
-    ///to contain all PLCSimTest Unit Tests
+    ///This is a test class for PLCScaledDataPointTest and is intended
+    ///to contain all PLCScaledDataPointTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class PLCSimTest
+    public class PLCDataPointTest
     {
 
 
@@ -63,18 +65,22 @@ namespace TestProject1
         //
         #endregion
 
-
         /// <summary>
-        ///A test for PLCSim Constructor
+        ///A test for Value
         ///</summary>
         [TestMethod()]
-        public void PLCSimConstructorTest()
+        public void ValueTest()
         {
-
-                var target = new PLCSim();
-                Assert.IsInstanceOfType(target,typeof(PLCSim));
-                target.Dispose();
+            var target = new PLCScaledDataPoint();
+            const float rawValue = 12;
+            const float expected = 50;
+            target.ValueGetAction = i => rawValue;
+            target.ScaleEngHigh = 100;
+            target.ScaleEngLow = 0;
+            target.ScaleRawHigh = 4;
+            target.ScaleRawLow = 20; 
+            var actual = target.Value;
+            Assert.AreEqual(expected, actual);
         }
-
     }
 }

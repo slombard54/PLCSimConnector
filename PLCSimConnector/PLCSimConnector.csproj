@@ -59,7 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataPoints\IPLCDataPoint.cs" />
     <Compile Include="PCS7Project.cs" />
+    <Compile Include="DataPoints\PLCDataPoint.cs" />
+    <Compile Include="DataPoints\PLCDataPoints.cs" />
+    <Compile Include="DataPoints\PLCScaledDataPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PLCSim.cs" />
     <Compile Include="SimulatedPLC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

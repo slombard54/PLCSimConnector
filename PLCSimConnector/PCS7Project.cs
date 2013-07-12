@@ -14,7 +14,7 @@ namespace PLCSimConnector
         }
         public PCS7Project(string projectFile){
             
-            Project = new Step7ProjectV5(projectFile,false);
+            //Project = new Step7ProjectV5(projectFile,false);
             File = projectFile;
         }
         public String File { 
@@ -29,7 +29,7 @@ namespace PLCSimConnector
         private SymbolTable pcs7SymbolTable;
 
         public SymbolTable PCS7SymbolTable
-        { 
+        {
             get 
             {
                 if (pcs7SymbolTable != null) return pcs7SymbolTable;
@@ -37,6 +37,7 @@ namespace PLCSimConnector
                 return pcs7SymbolTable;
             }
         }
+
         public string[,] GetOutputImageSymbolsOperands()
         {
             var returnString = new string[PCS7SymbolTable.SymbolTableEntrys.Count, 2];

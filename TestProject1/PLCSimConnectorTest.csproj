@@ -52,6 +52,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetSiemensPLCToolBoxLibrary.Fakes">
+      <HintPath>FakesAssemblies\DotNetSiemensPLCToolBoxLibrary.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.S7PROSIMLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -80,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PCS7ProjectTest.cs" />
+    <Compile Include="PLCDataPointTest.cs" />
     <Compile Include="PLCSimTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimulatedPLCTest.cs" />
@@ -100,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Fakes Include="Fakes\PLCSimConnector.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\DotNetSiemensPLCToolBoxLibrary.fakes" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
