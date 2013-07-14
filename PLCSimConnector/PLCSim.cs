@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.IO;
 using S7PROSIMLib;
 
 
@@ -18,7 +17,7 @@ namespace PLCSimConnector
             base.ConnectionError += ps_ConnectionError;
         }
 
-        void ps_ConnectionError(string controlEngine, int error)
+        public static void ps_ConnectionError(string controlEngine, int error)
         {
             throw new ApplicationException(error.ToString(CultureInfo.InvariantCulture));
         }

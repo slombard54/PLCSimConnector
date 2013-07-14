@@ -82,6 +82,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigEndianBitConverterTest.cs" />
     <Compile Include="PCS7ProjectTest.cs" />
     <Compile Include="PLCDataPointTest.cs" />
     <Compile Include="PLCSimTest.cs" />

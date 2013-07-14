@@ -15,7 +15,7 @@ namespace PLCSimSandbox
             Console.WriteLine("Sandbox app to test PLCSimConnector.dll");
             var c = new PLCSim();
             var plc = new SimulatedPLC(c);
-            Console.WriteLine(c.GetState());
+            //Console.WriteLine(c.GetState());
             var p = new PCS7Project("C:\\Program Files (x86)\\SIEMENS\\Step7\\S7Proj\\KING_M_1\\MID_CTRL\\MID_CTRL.s7p");
             Console.WriteLine("Press Any Key to Continue...");
             bool loop = true;
@@ -48,14 +48,25 @@ namespace PLCSimSandbox
                             break;
                         }
                     case 's':
+                        {
                             Console.WriteLine(p.Project.ProjectName);
                             Console.WriteLine(p.Project.ProjectDescription);
-                        var nope = p.GetOutputImageSymbols();
+                            var nope = p.GetOutputImageSymbols();
                             foreach (var s in nope)
                             {
                                 Console.WriteLine(s);
                             }
-                        break;
+                            break;
+                        }
+                    case 'z':
+                        {
+                            ValueType i;
+                            float f = 3;
+                            i = f;
+                            Console.WriteLine("the type of i is {0}", i.GetType());
+                            break;
+                        }
+                   
                     default:
                         loop = false;
                         break;

@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,13 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataPoints\BigEndianBitConverter.cs" />
     <Compile Include="DataPoints\IPLCDataPoint.cs" />
     <Compile Include="PCS7Project.cs" />
     <Compile Include="DataPoints\PLCDataPoint.cs" />
     <Compile Include="DataPoints\PLCDataPoints.cs" />
-    <Compile Include="DataPoints\PLCScaledDataPoint.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PLCSim.cs" />
     <Compile Include="SimulatedPLC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

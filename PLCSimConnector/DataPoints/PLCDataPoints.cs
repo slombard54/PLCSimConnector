@@ -45,12 +45,19 @@ namespace PLCSimConnector.DataPoints
         public IPLCDataPoint GetPLCDataPoint(string symbol)
         {   
             Debug.Print("Enter {0}:GetPLCDataPoint",GetType());
-            var i = dataPoints.BinarySearch(new PLCDataPoint<float> { Symbol = symbol });
+            var i = dataPoints.BinarySearch(new PLCDataPoint { Symbol = symbol });
             Debug.Indent();
             Debug.Print("Search for Symbol {0} returned {1}", symbol, i);
             Debug.Unindent();
             Debug.Print("Exit {0}:GetPLCDataPoint", GetType());
             return i>=0 ? dataPoints[i] : null;
         }
+
+        public void Add(IPLCDataPoint item)
+        {
+            dataPoints.Add(item);
+            dataPoints.Sort();
+        }
     }
 }
+

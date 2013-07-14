@@ -1,15 +1,26 @@
 ﻿using System;
 using System.Linq;
+using System.Dynamic;
 using DotNetSiemensPLCToolBoxLibrary.DataTypes.Projectfolders;
 
 namespace PLCSimConnector.DataPoints
 {
-    
+    public delegate dynamic GetValue(int offset);
+    public delegate void SetValue(int offset, dynamic setValue);
 
-    public class PLCDataPoint<T>: IPLCDataPoint, IComparable<PLCDataPoint<T>>, IComparable 
+    public class PLCDataPoint : IPLCDataPoint, IComparable<PLCDataPoint>
     {
-        public delegate T GetValue(int offset);
-        public delegate void SetValue(int offset, T setValue);
+        public PLCDataPoint()
+        {
+            
+        }
+
+        public PLCDataPoint(SymbolTableEntry entry)
+        {
+            Address = entry.OperandIEC;
+            DataType = entry.DataType;
+            Symbol = entry.Symbol;
+        }
 
         public virtual dynamic Value
         {
@@ -24,21 +35,21 @@ namespace PLCSimConnector.DataPoints
         public int Offset
         {
 
-            get 
-            { 
+            get
+            {
                 if (offset == -1) offset = Convert.ToInt32(new string(Address.ToCharArray().Where(Char.IsDigit).ToArray()));
                 
                 return offset; 
             }
         }
-
+        
         public GetValue ValueGetAction;
         public SetValue ValueSetAction;
 
         private int offset = -1;
-        public static explicit operator PLCDataPoint<T>(SymbolTableEntry entry)
+        public static explicit operator PLCDataPoint(SymbolTableEntry entry)
         {
-            var temp = new PLCDataPoint<T>
+            var temp = new PLCDataPoint
                 {
                     Address =  entry.OperandIEC,
                     DataType = entry.DataType,
@@ -47,7 +58,7 @@ namespace PLCSimConnector.DataPoints
             return temp;
         }
 
-        public int CompareTo(PLCDataPoint<T> other)
+        public int CompareTo(PLCDataPoint other)
         {
             if (this == other) return 0;
             if (other == null) return 1;
@@ -57,8 +68,16 @@ namespace PLCSimConnector.DataPoints
 
         public int CompareTo(object obj)
         {
-            return CompareTo((PLCDataPoint<T>) obj);
+            return CompareTo((PLCDataPoint) obj);
+        }
+
+        public int CompareTo(IPLCDataPoint other)
+        {
+            return CompareTo((PLCDataPoint) other);
         }
     }
+
+
+
 
 }

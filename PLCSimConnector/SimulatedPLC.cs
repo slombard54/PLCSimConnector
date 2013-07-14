@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using PLCSimConnector.DataPoints;
 using S7PROSIMLib;
 
@@ -65,228 +66,158 @@ namespace PLCSimConnector
         {
             Debug.Print("Enter {0}:AddScaledDataPoint", GetType());
             Debug.Indent();
-
-            if (point == null) throw new ArgumentNullException("point");
-
-            // Look for duplicate point in list
-            var dataPoint = (PLCScaledDataPoint)dataPointList.GetPLCDataPoint(point);
-            // IDEA: Verify that Points are equal
-            if (dataPoint != null)
-            {
-                Debug.Print("Symbol found in list returning item");
-                Debug.Unindent();
-                Debug.Print("Exit {0}:AddScaledDataPoint", GetType());
-                return dataPoint;
-            }
-
-            if (point.Trim(' ').Contains(" "))
-            {
-                Debug.Print("Address Detected");
-                dataPoint = new PLCScaledDataPoint {Address = point,Symbol = point};
-            }
-            else
-            {
-                Debug.Print("Symbol Detected");
-                dataPoint = (PLCScaledDataPoint)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
-                
-            }
-            if (dataPoint == null) throw new NoNullAllowedException(string.Format("Null Returned from PCS7Project Call for point {0}", point));
+            GetValue getValueAction = offset =>
+                {
+                    var temp = BigEndianBitConverter.ToInt16(outputImageBuffer.GetBuffer(), offset));
+                    return (((temp - rawLow) * (engHi - engLow)) / (rawHi - rawLow)) + engLow;
+                };
+            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((float)val), offset, 8);
             
-            //TODO: Added logic to detect read/write and buffer type
-            dataPoint.ValueGetAction = offset => BitConverter.ToSingle(outputImageBuffer.GetBuffer(), offset);
-            dataPoint.ValueSetAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes(val),offset,8);
+            var dataPoint = (PLCDataPoint)CreateDataPoint<PLCDataPoint>(point, getValueAction, setValueAction);
+
             
-            dataPoint.ScaleEngHigh = engHi;
+            /*dataPoint.ScaleEngHigh = engHi;
             dataPoint.ScaleEngLow = engLow;
             dataPoint.ScaleRawHigh = rawHi;
-            dataPoint.ScaleRawLow = rawLow;
+            dataPoint.ScaleRawLow = rawLow;*/
 
-            dataPointList.DataPoints.Add(dataPoint);
-            dataPointList.DataPoints.Sort();
+            dataPointList.Add(dataPoint);
             
             Debug.Unindent();
             Debug.Print("Exit {0}:AddScaledDataPoint", GetType());
             return dataPoint;
         }
 
-        public PLCDataPoint<float> AddRealDataPoint(string point)
+        public IPLCDataPoint AddRealDataPoint(string point)
         {
-            Debug.Print("Enter {0}:AddDWordDataPoint", GetType());
-            Debug.Indent();
-
-            if (point == null) throw new ArgumentNullException("point");
-            
-                // Look for duplicate point in list
-                var dataPoint = (PLCDataPoint<float>) dataPointList.GetPLCDataPoint(point);
-                // IDEA: Verify that Points are equal
-                if (dataPoint != null)
+            Debug.Print("Enter {0}:AddRealDataPoint", GetType());
+            GetValue getValueAction = offset =>
                 {
-                    Debug.Print("Symbol found in list returning item");
-                    Debug.Unindent();
-                    Debug.Print("Exit {0}:AddDataPoint", GetType());
-                    return dataPoint;
-                }
-            
-            if (!point.Trim(' ').Contains(" "))
-            {
-                Debug.Print("Address Detected");
-                //TODO: Add Data Type detection for points created from Address
-                dataPoint = new PLCDataPoint<float> { Address = point, Symbol = point, DataType = "Real" };
-            }
-            else
-            {
-                Debug.Print("Symbol Detected");
-                dataPoint = (PLCDataPoint<float>)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
+                    var i = BigEndianBitConverter.ToSingle(outputImageBuffer.GetBuffer(), offset);
+                    return i;
+                };
+            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((float)val), offset, 8);
 
-            }
-            if (dataPoint == null) throw new NoNullAllowedException(string.Format("Null Returned from PCS7Project Call for point {0}", point));
+            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
 
-            //TODO: Added logic to detect read/write and buffer type
-            dataPoint.ValueGetAction = offset => BitConverter.ToSingle(outputImageBuffer.GetBuffer(), offset);
-            dataPoint.ValueSetAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes(val), offset, 8);
 
-            dataPointList.DataPoints.Add(dataPoint);
-            dataPointList.DataPoints.Sort();
-
-            Debug.Unindent();
-            Debug.Print("Exit {0}:AddDataPoint", GetType());
+            dataPointList.Add(dataPoint);
             return dataPoint;
+
         }
 
-        public PLCDataPoint<Int32> AddDWordDataPoint(string point)
+        public IPLCDataPoint AddDWordDataPoint(string point)
         {
             Debug.Print("Enter {0}:AddDWordDataPoint", GetType());
-            Debug.Indent();
+            GetValue getValueAction = offset => BitConverter.ToInt32(outputImageBuffer.GetBuffer(), offset);
+            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((Int32)val), offset, 8);
 
-            if (point == null) throw new ArgumentNullException("point");
+            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
 
-            // Look for duplicate point in list
-            var dataPoint = (PLCDataPoint<Int32>)dataPointList.GetPLCDataPoint(point);
-            // IDEA: Verify that Points are equal
-            if (dataPoint != null)
-            {
-                Debug.Print("Symbol found in list returning item");
-                Debug.Unindent();
-                Debug.Print("Exit {0}:AddDataPoint", GetType());
-                return dataPoint;
-            }
 
-            if (!point.Trim(' ').Contains(" "))
-            {
-                Debug.Print("Address Detected");
-                //TODO: Add Data Type detection for points created from Address
-                dataPoint = new PLCDataPoint<Int32> { Address = point, Symbol = point, DataType = "Real" };
-            }
-            else
-            {
-                Debug.Print("Symbol Detected");
-                dataPoint = (PLCDataPoint<Int32>)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
-
-            }
-            if (dataPoint == null) throw new NoNullAllowedException(string.Format("Null Returned from PCS7Project Call for point {0}", point));
-
-            //TODO: Added logic to detect read/write and buffer type
-            dataPoint.ValueGetAction = offset => BitConverter.ToInt32(outputImageBuffer.GetBuffer(), offset);
-            dataPoint.ValueSetAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes(val), offset, 8);
-
-            dataPointList.DataPoints.Add(dataPoint);
-            dataPointList.DataPoints.Sort();
-
-            Debug.Unindent();
-            Debug.Print("Exit {0}:AddDataPoint", GetType());
+            dataPointList.Add(dataPoint);
             return dataPoint;
         }
 
-        public PLCDataPoint<Int16> AddWordDataPoint(string point)
+        public IPLCDataPoint AddWordDataPoint(string point)
         {
-            Debug.Print("Enter {0}:AddDWordDataPoint", GetType());
-            Debug.Indent();
+            Debug.Print("Enter {0}:AddWordDataPoint", GetType());
+            GetValue getValueAction = offset => BitConverter.ToInt16(outputImageBuffer.GetBuffer(), offset);
+            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((Int16)val), offset, 8);
 
-            if (point == null) throw new ArgumentNullException("point");
+            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
 
-            // Look for duplicate point in list
-            var dataPoint = (PLCDataPoint<Int16>)dataPointList.GetPLCDataPoint(point);
-            // IDEA: Verify that Points are equal
-            if (dataPoint != null)
-            {
-                Debug.Print("Symbol found in list returning item");
-                Debug.Unindent();
-                Debug.Print("Exit {0}:AddDataPoint", GetType());
-                return dataPoint;
-            }
 
-            if (!point.Trim(' ').Contains(" "))
-            {
-                Debug.Print("Address Detected");
-                //TODO: Add Data Type detection for points created from Address
-                dataPoint = new PLCDataPoint<Int16> { Address = point, Symbol = point, DataType = "Real" };
-            }
-            else
-            {
-                Debug.Print("Symbol Detected");
-                dataPoint = (PLCDataPoint<Int16>)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
-
-            }
-            if (dataPoint == null) throw new NoNullAllowedException(string.Format("Null Returned from PCS7Project Call for point {0}", point));
-
-            //TODO: Added logic to detect read/write and buffer type
-            dataPoint.ValueGetAction = offset => BitConverter.ToInt16(outputImageBuffer.GetBuffer(), offset);
-            dataPoint.ValueSetAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes(val), offset, 8);
-
-            dataPointList.DataPoints.Add(dataPoint);
-            dataPointList.DataPoints.Sort();
-
-            Debug.Unindent();
-            Debug.Print("Exit {0}:AddDataPoint", GetType());
+            dataPointList.Add(dataPoint);
             return dataPoint;
         }
 
-        public PLCDataPoint<byte> AddByteDataPoint(string point)
+        public IPLCDataPoint AddByteDataPoint(string point)
         {
             Debug.Print("Enter {0}:AddByteDataPoint", GetType());
-            Debug.Indent();
 
+            GetValue getValueAction = offset =>
+            {
+                var temp = new byte[1];
+                outputImageBuffer.Read(temp, offset, 1);
+                return temp[0];
+            };
+            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((byte)val), offset, 8);
+
+            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
+
+
+            dataPointList.Add(dataPoint);
+            return dataPoint;
+       }
+
+        private IPLCDataPoint CreateDataPoint(string point, GetValue getAction, SetValue setAction)
+        {
+            return CreateDataPoint<PLCDataPoint>(point, getAction, setAction);
+        }
+        private IPLCDataPoint CreateDataPoint<T>(string point, GetValue getAction, SetValue setAction  ) where T: PLCDataPoint, new()
+        {
+            Debug.Print("Enter {0}:CreateDataPoint<T>", GetType());
             if (point == null) throw new ArgumentNullException("point");
 
             // Look for duplicate point in list
-            var dataPoint = (PLCDataPoint<byte>)dataPointList.GetPLCDataPoint(point);
+            var existingDataPoint = dataPointList.GetPLCDataPoint(point) as T;
             // IDEA: Verify that Points are equal
-            if (dataPoint != null)
+            if (existingDataPoint != null)
             {
                 Debug.Print("Symbol found in list returning item");
                 Debug.Unindent();
-                Debug.Print("Exit {0}:AddDataPoint", GetType());
-                return dataPoint;
+                Debug.Print("Exit {0}:CreateDataPoint", GetType());
+                return existingDataPoint;
             }
 
-            if (!point.Trim(' ').Contains(" "))
+            T dataPoint;
+            if (point.Trim(' ').Contains(" "))
             {
                 Debug.Print("Address Detected");
-                //TODO: Add Data Type detection for points created from Address
-                dataPoint = new PLCDataPoint<byte> { Address = point, Symbol = point, DataType = "Real" };
+
+                string dataType = "";
+                switch (point.Substring(2,1))
+                {
+                    case "D":
+                        {
+                            dataType = "DWORD";
+                            break;
+                        }         
+                    case "W":
+                        {
+                            dataType = "WORD";
+                            break;
+                        }
+                    case "B":
+                        {
+                            dataType = "BYTE";
+                            break;
+                        }
+                }
+
+                dataPoint = new T { Address = point, Symbol = point, DataType = dataType };
             }
             else
             {
                 Debug.Print("Symbol Detected");
-                dataPoint = (PLCDataPoint<byte>)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
+                dataPoint = (T)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
 
             }
             if (dataPoint == null) throw new NoNullAllowedException(string.Format("Null Returned from PCS7Project Call for point {0}", point));
 
-            //TODO: Added logic to detect read/write and buffer type
-            dataPoint.ValueGetAction = offset =>
-                {
-                    var temp = new byte[1];
-                    outputImageBuffer.Read(temp,offset,1);
-                    return temp[0];
-                };
-            dataPoint.ValueSetAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes(val), offset, 8);
 
-            dataPointList.DataPoints.Add(dataPoint);
-            dataPointList.DataPoints.Sort();
+            if (dataPoint.Address.StartsWith("Q"))
+            {
+                dataPoint.ValueGetAction = getAction;
+            }
+            else
+            {
+                dataPoint.ValueSetAction = setAction;
+            }
 
             Debug.Unindent();
-            Debug.Print("Exit {0}:AddDataPoint", GetType());
+            Debug.Print("Exit {0}:CreateDataPoint<T>", GetType());
             return dataPoint;
         }
 

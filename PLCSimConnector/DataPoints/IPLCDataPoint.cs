@@ -1,7 +1,9 @@
 ﻿
+using System;
+
 namespace PLCSimConnector.DataPoints
 {
-    public interface IPLCDataPoint
+    public interface IPLCDataPoint : IComparable<IPLCDataPoint>, IComparable 
     {
         dynamic Value { get; set; }
         int Offset { get; }
@@ -9,6 +11,5 @@ namespace PLCSimConnector.DataPoints
         string Symbol { get; set; }
         string Address { get; set; }
         string DataType { get; set; }
-
     }
 }
