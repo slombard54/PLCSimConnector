@@ -3,7 +3,6 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using PLCSimConnector.DataPoints;
 using S7PROSIMLib;
 
@@ -66,112 +65,34 @@ namespace PLCSimConnector
         {
             Debug.Print("Enter {0}:AddScaledDataPoint", GetType());
             Debug.Indent();
-            GetValue getValueAction = offset =>
-                {
-                    var temp = BigEndianBitConverter.ToInt16(outputImageBuffer.GetBuffer(), offset));
-                    return (((temp - rawLow) * (engHi - engLow)) / (rawHi - rawLow)) + engLow;
-                };
-            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((float)val), offset, 8);
+            PostGetValue getValueAction = value => (((value - rawLow) * (engHi - engLow)) / (rawHi - rawLow)) + engLow;
+            PreSetValue setValueAction = value => (((value - engLow) * (rawHi - rawLow)) / (engHi - engLow)) + rawLow;
             
-            var dataPoint = (PLCDataPoint)CreateDataPoint<PLCDataPoint>(point, getValueAction, setValueAction);
+            var dataPoint = (PLCDataPoint)AddDataPoint(point, getValueAction, setValueAction);
 
-            
-            /*dataPoint.ScaleEngHigh = engHi;
-            dataPoint.ScaleEngLow = engLow;
-            dataPoint.ScaleRawHigh = rawHi;
-            dataPoint.ScaleRawLow = rawLow;*/
-
-            dataPointList.Add(dataPoint);
-            
             Debug.Unindent();
             Debug.Print("Exit {0}:AddScaledDataPoint", GetType());
             return dataPoint;
         }
 
-        public IPLCDataPoint AddRealDataPoint(string point)
+        private IPLCDataPoint AddDataPoint(string point, PostGetValue postGetAction = null, PreSetValue preSetAction = null)
         {
-            Debug.Print("Enter {0}:AddRealDataPoint", GetType());
-            GetValue getValueAction = offset =>
-                {
-                    var i = BigEndianBitConverter.ToSingle(outputImageBuffer.GetBuffer(), offset);
-                    return i;
-                };
-            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((float)val), offset, 8);
-
-            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
-
-
-            dataPointList.Add(dataPoint);
-            return dataPoint;
-
-        }
-
-        public IPLCDataPoint AddDWordDataPoint(string point)
-        {
-            Debug.Print("Enter {0}:AddDWordDataPoint", GetType());
-            GetValue getValueAction = offset => BitConverter.ToInt32(outputImageBuffer.GetBuffer(), offset);
-            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((Int32)val), offset, 8);
-
-            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
-
-
-            dataPointList.Add(dataPoint);
-            return dataPoint;
-        }
-
-        public IPLCDataPoint AddWordDataPoint(string point)
-        {
-            Debug.Print("Enter {0}:AddWordDataPoint", GetType());
-            GetValue getValueAction = offset => BitConverter.ToInt16(outputImageBuffer.GetBuffer(), offset);
-            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((Int16)val), offset, 8);
-
-            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
-
-
-            dataPointList.Add(dataPoint);
-            return dataPoint;
-        }
-
-        public IPLCDataPoint AddByteDataPoint(string point)
-        {
-            Debug.Print("Enter {0}:AddByteDataPoint", GetType());
-
-            GetValue getValueAction = offset =>
-            {
-                var temp = new byte[1];
-                outputImageBuffer.Read(temp, offset, 1);
-                return temp[0];
-            };
-            SetValue setValueAction = (offset, val) => inputImageBuffer.Write(BitConverter.GetBytes((byte)val), offset, 8);
-
-            var dataPoint = (PLCDataPoint)CreateDataPoint(point, getValueAction, setValueAction);
-
-
-            dataPointList.Add(dataPoint);
-            return dataPoint;
-       }
-
-        private IPLCDataPoint CreateDataPoint(string point, GetValue getAction, SetValue setAction)
-        {
-            return CreateDataPoint<PLCDataPoint>(point, getAction, setAction);
-        }
-        private IPLCDataPoint CreateDataPoint<T>(string point, GetValue getAction, SetValue setAction  ) where T: PLCDataPoint, new()
-        {
-            Debug.Print("Enter {0}:CreateDataPoint<T>", GetType());
+            Debug.Print("Enter {0}:AddDataPoint", GetType());
             if (point == null) throw new ArgumentNullException("point");
+            
 
             // Look for duplicate point in list
-            var existingDataPoint = dataPointList.GetPLCDataPoint(point) as T;
+            var existingDataPoint = dataPointList.GetPLCDataPoint(point);
             // IDEA: Verify that Points are equal
             if (existingDataPoint != null)
             {
                 Debug.Print("Symbol found in list returning item");
                 Debug.Unindent();
-                Debug.Print("Exit {0}:CreateDataPoint", GetType());
+                Debug.Print("Exit {0}:AddDataPoint", GetType());
                 return existingDataPoint;
             }
 
-            T dataPoint;
+            PLCDataPoint dataPoint;
             if (point.Trim(' ').Contains(" "))
             {
                 Debug.Print("Address Detected");
@@ -196,35 +117,85 @@ namespace PLCSimConnector
                         }
                 }
 
-                dataPoint = new T { Address = point, Symbol = point, DataType = dataType };
+                dataPoint = new PLCDataPoint { Address = point, Symbol = point, DataType = dataType };
             }
             else
             {
                 Debug.Print("Symbol Detected");
-                dataPoint = (T)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
+                try
+                {
+                    dataPoint = (PLCDataPoint)Project.PCS7SymbolTable.GetEntryFromSymbol(point);
+                }
+                catch (NullReferenceException e)
+                {
+                    
+                    throw new ApplicationException("PCS7Project is not intialized ", e);
+                }
+                
 
             }
             if (dataPoint == null) throw new NoNullAllowedException(string.Format("Null Returned from PCS7Project Call for point {0}", point));
+            
+            GetValue getAction = offset => 0;
+            SetValue setAction = (offset, value) => { };
+            switch(dataPoint.DataType)
+            {
+                case "WORD":
+                    getAction = outputImageBuffer.ToBEInt16;
+                    setAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((Int16)val), offset, 8);
+                    break;
+
+                case "DWORD":
+                    getAction = outputImageBuffer.ToBEInt32;
+                    setAction = (offset,val) => outputImageBuffer.GetBuffer().WriteBE((int)val,offset);
+                    break;
+
+                case "REAL":
+                    getAction = outputImageBuffer.ToBESingle;
+                    setAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((float)val), offset, 8);
+                    break;
+
+                case "BYTE":
+                    getAction = offset =>
+            {
+                outputImageBuffer.Seek(offset, SeekOrigin.Begin);
+                return outputImageBuffer.ReadByte();
+            };
+                    setAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((byte)val), offset, 8);
+                   break;
+
+            }
+            switch (dataPoint.Address.Trim().ToUpper().First())
+            {
+                case 'Q':
+                    dataPoint.ValueGetAction = getAction;
+                    break;
+                case 'I':
+                    dataPoint.ValueSetAction = setAction;
+                    break;
+                default:
+                    dataPoint.ValueGetAction = getAction;
+                    dataPoint.ValueSetAction = setAction;
+                    break;
+            }
+            if (postGetAction != null)
+                dataPoint.ValuePostGetAction = postGetAction;
+            if (preSetAction != null)
+                dataPoint.ValuePreSetAction = preSetAction;
 
 
-            if (dataPoint.Address.StartsWith("Q"))
-            {
-                dataPoint.ValueGetAction = getAction;
-            }
-            else
-            {
-                dataPoint.ValueSetAction = setAction;
-            }
+            dataPointList.Add(dataPoint);
+            UpdateImages();
 
             Debug.Unindent();
-            Debug.Print("Exit {0}:CreateDataPoint<T>", GetType());
+            Debug.Print("Exit {0}:AddDataPoint", GetType());
             return dataPoint;
         }
 
         public void UpdateOutputImage()
         {
             object pData = null;
-            int max = dataPointList.Max(item => { return item.Offset; });
+            int max = dataPointList.Max(item => item.Offset);
             SimPLC.ReadOutputImage(0, max+8, ImageDataTypeConstants.S7Byte, ref pData);
             var byteData = (byte[])pData;
             outputImageBuffer.Seek(0, SeekOrigin.Begin);

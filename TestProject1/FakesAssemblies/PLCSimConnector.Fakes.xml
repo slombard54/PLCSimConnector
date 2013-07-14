@@ -31,6 +31,15 @@
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.GetBytesSingle">
             <summary>Sets the shim of BigEndianBitConverter.GetBytes(Single value)</summary>
         </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.ToBEInt16MemoryStreamInt32">
+            <summary>Sets the shim of BigEndianBitConverter.ToBEInt16(MemoryStream s, Int32 offset)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.ToBEInt32MemoryStreamInt32">
+            <summary>Sets the shim of BigEndianBitConverter.ToBEInt32(MemoryStream s, Int32 offset)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.ToBESingleMemoryStreamInt32">
+            <summary>Sets the shim of BigEndianBitConverter.ToBESingle(MemoryStream s, Int32 offset)</summary>
+        </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.ToInt16ByteArrayInt32">
             <summary>Sets the shim of BigEndianBitConverter.ToInt16(Byte[] array, Int32 index)</summary>
         </member>
@@ -39,6 +48,15 @@
         </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.ToSingleByteArrayInt32">
             <summary>Sets the shim of BigEndianBitConverter.ToSingle(Byte[] array, Int32 index)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.WriteBEByteArrayInt16Int32">
+            <summary>Sets the shim of BigEndianBitConverter.WriteBE(Byte[] buffer, Int16 value, Int32 offset)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.WriteBEByteArrayInt32Int32">
+            <summary>Sets the shim of BigEndianBitConverter.WriteBE(Byte[] buffer, Int32 value, Int32 offset)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.WriteBEByteArraySingleInt32">
+            <summary>Sets the shim of BigEndianBitConverter.WriteBE(Byte[] buffer, Single value, Int32 offset)</summary>
         </member>
         <member name="T:PLCSimConnector.DataPoints.Fakes.ShimPLCDataPoint">
             <summary>Shim type of PLCSimConnector.DataPoints.PLCDataPoint</summary>
@@ -114,6 +132,12 @@
         </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCDataPoint.ValueSetObject">
             <summary>Sets the shim of PLCDataPoint.set_Value(Object value)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCDataPoint._ctorb__0Object">
+            <summary>Sets the shim of PLCDataPoint.&lt;.ctor&gt;b__0(Object value)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCDataPoint._ctorb__1Object">
+            <summary>Sets the shim of PLCDataPoint.&lt;.ctor&gt;b__1(Object value)</summary>
         </member>
         <member name="T:PLCSimConnector.DataPoints.Fakes.ShimPLCDataPoint.AllInstances">
             <summary>Define shims for all instances members</summary>
@@ -225,105 +249,6 @@
         </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCDataPoints.AllInstances.SystemCollectionsIEnumerableGetEnumerator">
             <summary>Sets the shim of PLCDataPoints.System.Collections.IEnumerable.GetEnumerator()</summary>
-        </member>
-        <member name="T:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint">
-            <summary>Shim type of PLCSimConnector.DataPoints.PLCScaledDataPoint</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.#ctor">
-            <summary>Initializes a new shim instance</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.#ctor(PLCSimConnector.DataPoints.PLCScaledDataPoint)">
-            <summary>Initializes a new shim for the given instance</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.BehaveAsCurrent">
-            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.BehaveAsNotImplemented">
-            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.Bind(PLCSimConnector.DataPoints.IPLCDataPoint)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.Bind(System.IComparable)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.Bind(System.IComparable{PLCSimConnector.DataPoints.IPLCDataPoint})">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.Bind(System.IComparable{PLCSimConnector.DataPoints.PLCDataPoint})">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.Behavior">
-            <summary>Assigns the behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.Constructor">
-            <summary>Sets the shim of PLCScaledDataPoint.PLCScaledDataPoint()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ConstructorSymbolTableEntry">
-            <summary>Sets the shim of PLCScaledDataPoint.PLCScaledDataPoint(SymbolTableEntry entry)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ExplicitOpSymbolTableEntryPLCScaledDataPoint">
-            <summary>Sets the shim of PLCScaledDataPoint.op_Explicit(SymbolTableEntry entry)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleEngHighGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleEngHigh()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleEngHighSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleEngHigh(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleEngLowGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleEngLow()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleEngLowSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleEngLow(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleRawHighGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleRawHigh()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleRawHighSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleRawHigh(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleRawLowGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleRawLow()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ScaleRawLowSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleRawLow(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.ValueGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_Value()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint._ctorb__0ValueTypeSingleSingleSingleSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.&lt;.ctor&gt;b__0(ValueType val, Single eHi, Single eLow, Single rHi, Single rLow)</summary>
-        </member>
-        <member name="T:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances">
-            <summary>Define shims for all instances members</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleEngHighGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleEngHigh()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleEngHighSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleEngHigh(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleEngLowGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleEngLow()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleEngLowSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleEngLow(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleRawHighGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleRawHigh()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleRawHighSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleRawHigh(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleRawLowGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_ScaleRawLow()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ScaleRawLowSetSingle">
-            <summary>Sets the shim of PLCScaledDataPoint.set_ScaleRawLow(Single value)</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimPLCScaledDataPoint.AllInstances.ValueGet">
-            <summary>Sets the shim of PLCScaledDataPoint.get_Value()</summary>
         </member>
         <member name="T:PLCSimConnector.DataPoints.Fakes.StubIPLCDataPoint">
             <summary>Stub type of PLCSimConnector.DataPoints.IPLCDataPoint</summary>
@@ -447,33 +372,6 @@
         </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.StubPLCDataPoints.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="T:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint">
-            <summary>Stub type of PLCSimConnector.DataPoints.PLCScaledDataPoint</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.#ctor(DotNetSiemensPLCToolBoxLibrary.DataTypes.Projectfolders.SymbolTableEntry)">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.InitializeStub">
-            <summary>Initializes a new instance of type StubPLCScaledDataPoint</summary>
-        </member>
-        <member name="F:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.ValueGet">
-            <summary>Sets the stub of PLCScaledDataPoint.get_Value()</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="P:PLCSimConnector.DataPoints.Fakes.StubPLCScaledDataPoint.Value">
-            <summary>Sets the stub of PLCScaledDataPoint.get_Value()</summary>
         </member>
         <member name="T:PLCSimConnector.Fakes.ShimPCS7Project">
             <summary>Shim type of PLCSimConnector.PCS7Project</summary>
@@ -622,23 +520,11 @@
         <member name="M:PLCSimConnector.Fakes.ShimSimulatedPLC.Bind(System.IDisposable)">
             <summary>Binds the members of the interface to the shim.</summary>
         </member>
-        <member name="M:PLCSimConnector.Fakes.ShimSimulatedPLC.CreateDataPointOf1StringGetValueSetValue``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.String,PLCSimConnector.DataPoints.GetValue,PLCSimConnector.DataPoints.SetValue,PLCSimConnector.DataPoints.IPLCDataPoint})">
-            <summary>Sets the shim of SimulatedPLC.CreateDataPoint(String point, GetValue getAction, SetValue setAction)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AddByteDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddByteDataPoint(String point)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AddDWordDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddDWordDataPoint(String point)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AddRealDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddRealDataPoint(String point)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AddDataPointStringPostGetValuePreSetValue">
+            <summary>Sets the shim of SimulatedPLC.AddDataPoint(String point, PostGetValue postGetAction, PreSetValue preSetAction)</summary>
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AddScaledDataPointStringSingleSingleSingleSingle">
             <summary>Sets the shim of SimulatedPLC.AddScaledDataPoint(String point, Single engHi, Single engLow, Single rawHi, Single rawLow)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AddWordDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddWordDataPoint(String point)</summary>
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.Behavior">
             <summary>Assigns the behavior for all methods of the shimmed type</summary>
@@ -648,9 +534,6 @@
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.ConstructorPLCSim">
             <summary>Sets the shim of SimulatedPLC.SimulatedPLC(PLCSim plcSimObject)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.CreateDataPointStringGetValueSetValue">
-            <summary>Sets the shim of SimulatedPLC.CreateDataPoint(String point, GetValue getAction, SetValue setAction)</summary>
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.Dispose">
             <summary>Sets the shim of SimulatedPLC.Dispose()</summary>
@@ -691,59 +574,38 @@
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.UpdateOutputImage">
             <summary>Sets the shim of SimulatedPLC.UpdateOutputImage()</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddByteDataPointb__14Int32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddByteDataPoint&gt;b__14(Int32 offset)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDataPointb__13Int32">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__13(Int32 offset)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddByteDataPointb__15Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddByteDataPoint&gt;b__15(Int32 offset, Object val)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDataPointb__14Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__14(Int32 offset, Object value)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDWordDataPointb__cInt32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddDWordDataPoint&gt;b__c(Int32 offset)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDataPointb__15Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__15(Int32 offset, Object val)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDWordDataPointb__dInt32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddDWordDataPoint&gt;b__d(Int32 offset, Object val)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDataPointb__16Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__16(Int32 offset, Object val)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddRealDataPointb__8Int32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddRealDataPoint&gt;b__8(Int32 offset)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDataPointb__17Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__17(Int32 offset, Object val)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddRealDataPointb__9Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddRealDataPoint&gt;b__9(Int32 offset, Object val)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDataPointb__18Int32">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__18(Int32 offset)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddScaledDataPointb__3Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddScaledDataPoint&gt;b__3(Int32 offset, Object val)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddDataPointb__19Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__19(Int32 offset, Object val)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddWordDataPointb__10Int32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddWordDataPoint&gt;b__10(Int32 offset)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._AddWordDataPointb__11Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddWordDataPoint&gt;b__11(Int32 offset, Object val)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._UpdateOutputImageb__17IPLCDataPoint">
-            <summary>Sets the shim of SimulatedPLC.&lt;UpdateOutputImage&gt;b__17(IPLCDataPoint item)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC._UpdateOutputImageb__21IPLCDataPoint">
+            <summary>Sets the shim of SimulatedPLC.&lt;UpdateOutputImage&gt;b__21(IPLCDataPoint item)</summary>
         </member>
         <member name="T:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances">
             <summary>Define shims for all instances members</summary>
         </member>
-        <member name="M:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.CreateDataPointOf1StringGetValueSetValue``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{PLCSimConnector.SimulatedPLC,System.String,PLCSimConnector.DataPoints.GetValue,PLCSimConnector.DataPoints.SetValue,PLCSimConnector.DataPoints.IPLCDataPoint})">
-            <summary>Sets the shim of SimulatedPLC.CreateDataPoint(String point, GetValue getAction, SetValue setAction)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.AddByteDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddByteDataPoint(String point)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.AddDWordDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddDWordDataPoint(String point)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.AddRealDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddRealDataPoint(String point)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.AddDataPointStringPostGetValuePreSetValue">
+            <summary>Sets the shim of SimulatedPLC.AddDataPoint(String point, PostGetValue postGetAction, PreSetValue preSetAction)</summary>
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.AddScaledDataPointStringSingleSingleSingleSingle">
             <summary>Sets the shim of SimulatedPLC.AddScaledDataPoint(String point, Single engHi, Single engLow, Single rawHi, Single rawLow)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.AddWordDataPointString">
-            <summary>Sets the shim of SimulatedPLC.AddWordDataPoint(String point)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.CreateDataPointStringGetValueSetValue">
-            <summary>Sets the shim of SimulatedPLC.CreateDataPoint(String point, GetValue getAction, SetValue setAction)</summary>
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.Dispose">
             <summary>Sets the shim of SimulatedPLC.Dispose()</summary>
@@ -784,32 +646,20 @@
         <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances.UpdateOutputImage">
             <summary>Sets the shim of SimulatedPLC.UpdateOutputImage()</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddByteDataPointb__14Int32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddByteDataPoint&gt;b__14(Int32 offset)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddDataPointb__15Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__15(Int32 offset, Object val)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddByteDataPointb__15Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddByteDataPoint&gt;b__15(Int32 offset, Object val)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddDataPointb__16Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__16(Int32 offset, Object val)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddDWordDataPointb__cInt32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddDWordDataPoint&gt;b__c(Int32 offset)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddDataPointb__17Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__17(Int32 offset, Object val)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddDWordDataPointb__dInt32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddDWordDataPoint&gt;b__d(Int32 offset, Object val)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddDataPointb__18Int32">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__18(Int32 offset)</summary>
         </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddRealDataPointb__8Int32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddRealDataPoint&gt;b__8(Int32 offset)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddRealDataPointb__9Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddRealDataPoint&gt;b__9(Int32 offset, Object val)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddScaledDataPointb__3Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddScaledDataPoint&gt;b__3(Int32 offset, Object val)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddWordDataPointb__10Int32">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddWordDataPoint&gt;b__10(Int32 offset)</summary>
-        </member>
-        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddWordDataPointb__11Int32Object">
-            <summary>Sets the shim of SimulatedPLC.&lt;AddWordDataPoint&gt;b__11(Int32 offset, Object val)</summary>
+        <member name="P:PLCSimConnector.Fakes.ShimSimulatedPLC.AllInstances._AddDataPointb__19Int32Object">
+            <summary>Sets the shim of SimulatedPLC.&lt;AddDataPoint&gt;b__19(Int32 offset, Object val)</summary>
         </member>
         <member name="T:PLCSimConnector.Fakes.StubPCS7Project">
             <summary>Stub type of PLCSimConnector.PCS7Project</summary>

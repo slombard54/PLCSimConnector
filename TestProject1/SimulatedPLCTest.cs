@@ -192,5 +192,31 @@ namespace TestProject1
             }
 
         }
+
+        /// <summary>
+        ///A test for AddScaledDataPoint
+        ///</summary>
+        [TestMethod()]
+        public void AddScaledDataPointNullTest()
+        {
+            using (ShimsContext.Create())
+            {
+
+                var target = new SimulatedPLC {Project = null};
+
+                string point = "Test";
+                float engHi = 100;
+                float engLow = 0;
+                float rawHi = 4;
+                float rawLow = 20;
+                var actual = (PLCDataPoint) target.AddScaledDataPoint(point, engHi, engLow, rawHi, rawLow);
+                Assert.IsNotNull(actual);
+                Assert.AreEqual(point, actual.Symbol);
+                /*Assert.AreEqual(engHi, actual.ScaleEngHigh);
+                Assert.AreEqual(engLow, actual.ScaleEngLow);
+                Assert.AreEqual(rawHi, actual.ScaleRawHigh);
+                Assert.AreEqual(rawLow, actual.ScaleRawLow);*/
+            }
+        }
     }
 }

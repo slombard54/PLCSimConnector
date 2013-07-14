@@ -1,61 +1,41 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Linq;
-using System.Dynamic;
 using DotNetSiemensPLCToolBoxLibrary.DataTypes.Projectfolders;
+
+#endregion
 
 namespace PLCSimConnector.DataPoints
 {
     public delegate dynamic GetValue(int offset);
+
+    public delegate dynamic PostGetValue(dynamic value);
+
+    public delegate dynamic PreSetValue(dynamic setValue);
+
     public delegate void SetValue(int offset, dynamic setValue);
 
     public class PLCDataPoint : IPLCDataPoint, IComparable<PLCDataPoint>
     {
+        public GetValue ValueGetAction;
+        public PostGetValue ValuePostGetAction;
+        public PreSetValue ValuePreSetAction;
+        public SetValue ValueSetAction;
+
+        private int offset = -1;
+
         public PLCDataPoint()
         {
-            
+            ValuePostGetAction = value => value;
+            ValuePreSetAction = value => value;
         }
 
-        public PLCDataPoint(SymbolTableEntry entry)
+        public PLCDataPoint(SymbolTableEntry entry) : this()
         {
             Address = entry.OperandIEC;
             DataType = entry.DataType;
             Symbol = entry.Symbol;
-        }
-
-        public virtual dynamic Value
-        {
-            get { return ValueGetAction(Offset); }
-            set { ValueSetAction(offset,value); } //TODO: Check Type
-        }
-
-        public string Symbol { get; set; }
-        public string Address { get; set; }
-        public string DataType { get; set; }
-
-        public int Offset
-        {
-
-            get
-            {
-                if (offset == -1) offset = Convert.ToInt32(new string(Address.ToCharArray().Where(Char.IsDigit).ToArray()));
-                
-                return offset; 
-            }
-        }
-        
-        public GetValue ValueGetAction;
-        public SetValue ValueSetAction;
-
-        private int offset = -1;
-        public static explicit operator PLCDataPoint(SymbolTableEntry entry)
-        {
-            var temp = new PLCDataPoint
-                {
-                    Address =  entry.OperandIEC,
-                    DataType = entry.DataType,
-                    Symbol = entry.Symbol
-                };
-            return temp;
         }
 
         public int CompareTo(PLCDataPoint other)
@@ -64,6 +44,27 @@ namespace PLCSimConnector.DataPoints
             if (other == null) return 1;
 
             return String.CompareOrdinal(Symbol, other.Symbol);
+        }
+
+        public virtual dynamic Value
+        {
+            get { return ValuePostGetAction(ValueGetAction(Offset)); }
+            set { ValueSetAction(offset, ValuePreSetAction(value)); }
+        }
+
+        public string Symbol { get; set; }
+        public string Address { get; set; }
+        public string DataType { get; set; }
+
+        public int Offset
+        {
+            get
+            {
+                if (offset == -1)
+                    offset = Convert.ToInt32(new string(Address.ToCharArray().Where(Char.IsDigit).ToArray()));
+
+                return offset;
+            }
         }
 
         public int CompareTo(object obj)
@@ -75,9 +76,16 @@ namespace PLCSimConnector.DataPoints
         {
             return CompareTo((PLCDataPoint) other);
         }
+
+        public static explicit operator PLCDataPoint(SymbolTableEntry entry)
+        {
+            var temp = new PLCDataPoint
+                {
+                    Address = entry.OperandIEC,
+                    DataType = entry.DataType,
+                    Symbol = entry.Symbol
+                };
+            return temp;
+        }
     }
-
-
-
-
 }

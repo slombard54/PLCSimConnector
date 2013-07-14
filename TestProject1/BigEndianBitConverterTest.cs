@@ -132,7 +132,7 @@ namespace TestProject1
             byte[] array = null;
             try
             {
-                int actual = BigEndianBitConverter.ToInt16(array, index);
+                BigEndianBitConverter.ToInt16(array, index);
             }
             catch (ArgumentNullException e)
             {
@@ -153,7 +153,7 @@ namespace TestProject1
             index = 4;
             try
             {
-                int actual = BigEndianBitConverter.ToInt16(array, index);
+                BigEndianBitConverter.ToInt16(array, index);
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -163,7 +163,7 @@ namespace TestProject1
         }
 
         /// <summary>
-        ///A test for ToSingle
+        ///A test for ToBESingle
         ///</summary>
         [TestMethod()]
         public void ToSingleTest()

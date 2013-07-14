@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace PLCSimConnector.DataPoints
 {
@@ -37,44 +34,72 @@ namespace PLCSimConnector.DataPoints
             }
         }
 
-        unsafe public static byte[] GetBytes(int value)
+        public static byte[] GetBytes(int value)
         {
             var bytes = new byte[4];
-            fixed (byte* b = bytes)
-            {
-                var pbyte = (byte*) &value;
-                *((int*)b) = ((*pbyte << 24) | (*(pbyte + 1) << 16) | (*(pbyte + 2) << 8) | (*(pbyte + 3)));
-            }
+            bytes.WriteBE(value);
             return bytes; 
         }
 
-        unsafe public static byte[] GetBytes(short value)
+        public static byte[] GetBytes(short value)
         {
             var bytes = new byte[2];
-            fixed (byte* b = bytes)
-            {
-                var pbyte = (byte*)&value;
-                *((int*)b) = ((*(pbyte) << 8) | (*(pbyte + 1)));
-            }
+            bytes.WriteBE(value);
             return bytes;
         }
 
-        unsafe public static byte[] GetBytes(float value)
-        {
+        public static byte[] GetBytes(float value)
+        {                       
             var bytes = new byte[4];
-            fixed (byte* b = bytes)
+            bytes.WriteBE(value);
+            return bytes;
+        }
+
+        /// <summary>
+        /// Memory Stream extension to allow to float item at offset
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
+
+        public static dynamic ToBESingle(this MemoryStream s, int offset)
+        {
+            return ToSingle(s.GetBuffer(), offset);
+        }
+
+        public static dynamic ToBEInt32(this MemoryStream s, int offset)
+        {
+            return ToInt32(s.GetBuffer(), offset);
+        }
+        public static dynamic ToBEInt16(this MemoryStream s, int offset)
+        {
+            return ToInt16(s.GetBuffer(), offset);
+        }
+
+        unsafe public static void WriteBE(this byte[] buffer, float value, int offset = 0)
+        {
+
+            WriteBE(buffer, (int)&value, offset);
+            
+        }
+        unsafe public static void WriteBE(this byte[] buffer, int value, int offset = 0)
+        {
+
+            fixed (byte* b = &buffer[offset])
             {
                 var pbyte = (byte*)&value;
                 *((int*)b) = ((*pbyte << 24) | (*(pbyte + 1) << 16) | (*(pbyte + 2) << 8) | (*(pbyte + 3)));
             }
-            return bytes;
+
         }
 
-        public static MemoryStream ToSingle(this MemoryStream s, int offset)
+        public static unsafe void WriteBE(this byte[] buffer, short value, int offset = 0)
         {
-            ToSingle(s.GetBuffer(), offset);
-            return s;
+            fixed (byte* b = &buffer[offset])
+            {
+                var pbyte = (byte*) &value;
+                *((int*) b) = ((*(pbyte) << 8) | (*(pbyte + 1)));
+            }
         }
-        
     }
 }
