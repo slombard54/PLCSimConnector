@@ -1,7 +1,9 @@
 ﻿#region
 
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using DotNetSiemensPLCToolBoxLibrary.DataTypes.Projectfolders;
 
 #endregion
@@ -24,7 +26,7 @@ namespace PLCSimConnector.DataPoints
         public SetValue ValueSetAction;
 
         private int offset = -1;
-
+        private int bit = -1;
         public PLCDataPoint()
         {
             ValuePostGetAction = value => value;
@@ -52,6 +54,11 @@ namespace PLCSimConnector.DataPoints
             set { ValueSetAction(offset, ValuePreSetAction(value)); }
         }
 
+        public int Bit
+        {
+            get { return bit; }
+        }
+
         public string Symbol { get; set; }
         public string Address { get; set; }
         public string DataType { get; set; }
@@ -60,9 +67,12 @@ namespace PLCSimConnector.DataPoints
         {
             get
             {
+                var m = Regex.Matches(Address, @"(\d+)(?:\.(\d*))?$");
                 if (offset == -1)
-                    offset = Convert.ToInt32(new string(Address.ToCharArray().Where(Char.IsDigit).ToArray()));
-
+                {
+                    offset = Convert.ToInt32(m[0].ToString());
+                    //new string(Address.ToCharArray().Where(Char.IsDigit).ToArray()));
+                }
                 return offset;
             }
         }
@@ -77,6 +87,17 @@ namespace PLCSimConnector.DataPoints
             return CompareTo((PLCDataPoint) other);
         }
 
+        public void DataPointScaling( float engHi, float engLow, float rawHi, float rawLow)
+        {
+            Debug.Print("Enter {0}:DataPointScaling", GetType());
+            Debug.Indent();
+            ValuePostGetAction = value => (((value - rawLow) * (engHi - engLow)) / (rawHi - rawLow)) + engLow;
+            ValuePreSetAction = value => (((value - engLow) * (rawHi - rawLow)) / (engHi - engLow)) + rawLow;
+
+            Debug.Unindent();
+            Debug.Print("Exit {0}:DataPointScaling", GetType());
+        }
+
         public static explicit operator PLCDataPoint(SymbolTableEntry entry)
         {
             var temp = new PLCDataPoint
@@ -87,5 +108,6 @@ namespace PLCSimConnector.DataPoints
                 };
             return temp;
         }
+        
     }
 }

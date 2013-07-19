@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Collections;
 using PLCSimConnector.DataPoints;
 using S7PROSIMLib;
 
@@ -12,7 +15,6 @@ namespace PLCSimConnector
     {
         public PCS7Project Project { set; get; }
         private MemoryStream outputImageBuffer;
-        private MemoryStream inputImageBuffer;
         private int maxOutputOffset;
         private bool disposed;
         private readonly PLCDataPoints dataPointList;
@@ -29,9 +31,20 @@ namespace PLCSimConnector
             dataPointList = new PLCDataPoints();
 
             outputImageBuffer = new MemoryStream();
-            inputImageBuffer = new MemoryStream();
             UpdateImages += UpdateInputImage;
             UpdateImages += UpdateOutputImage;
+            try
+            {
+                var textListener = new TextWriterTraceListener("c:\\temp\\PLCSimConnector.log", "PLCSimListener");
+                textListener.TraceOutputOptions |= TraceOptions.DateTime;
+                Trace.Listeners.Add(textListener);
+                Trace.AutoFlush = true;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failure to setup Trace Listener", ex);
+            }
+            Trace.WriteLine("{0} simulatedPLC object created trace started.",DateTime.Now.ToString(CultureInfo.CurrentCulture));
         }
 
         
@@ -41,11 +54,7 @@ namespace PLCSimConnector
             set { outputImageBuffer = value; }
         }
 
-        public MemoryStream InputImageBuffer
-        {
-            get { return inputImageBuffer; }
-            set { inputImageBuffer = value; }
-        }
+
 
         public PLCSim SimPLC { get; set; }
 
@@ -61,21 +70,7 @@ namespace PLCSimConnector
             }
         }
 
-        public IPLCDataPoint AddScaledDataPoint(string point, float engHi, float engLow, float rawHi, float rawLow) 
-        {
-            Debug.Print("Enter {0}:AddScaledDataPoint", GetType());
-            Debug.Indent();
-            PostGetValue getValueAction = value => (((value - rawLow) * (engHi - engLow)) / (rawHi - rawLow)) + engLow;
-            PreSetValue setValueAction = value => (((value - engLow) * (rawHi - rawLow)) / (engHi - engLow)) + rawLow;
-            
-            var dataPoint = (PLCDataPoint)AddDataPoint(point, getValueAction, setValueAction);
-
-            Debug.Unindent();
-            Debug.Print("Exit {0}:AddScaledDataPoint", GetType());
-            return dataPoint;
-        }
-
-        private IPLCDataPoint AddDataPoint(string point, PostGetValue postGetAction = null, PreSetValue preSetAction = null)
+        public IPLCDataPoint AddDataPoint(string point, PostGetValue postGetAction = null, PreSetValue preSetAction = null)
         {
             Debug.Print("Enter {0}:AddDataPoint", GetType());
             if (point == null) throw new ArgumentNullException("point");
@@ -135,24 +130,24 @@ namespace PLCSimConnector
 
             }
             if (dataPoint == null) throw new NoNullAllowedException(string.Format("Null Returned from PCS7Project Call for point {0}", point));
-            
+
             GetValue getAction = offset => 0;
             SetValue setAction = (offset, value) => { };
             switch(dataPoint.DataType)
             {
                 case "WORD":
                     getAction = outputImageBuffer.ToBEInt16;
-                    setAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((Int16)val), offset, 8);
+                    setAction = (offset, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((Int16)val)));
                     break;
 
                 case "DWORD":
                     getAction = outputImageBuffer.ToBEInt32;
-                    setAction = (offset,val) => outputImageBuffer.GetBuffer().WriteBE((int)val,offset);
+                    setAction = (offset,val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((int)val)));
                     break;
 
                 case "REAL":
                     getAction = outputImageBuffer.ToBESingle;
-                    setAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((float)val), offset, 8);
+                    setAction = (offset, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((float)val)));
                     break;
 
                 case "BYTE":
@@ -161,7 +156,7 @@ namespace PLCSimConnector
                 outputImageBuffer.Seek(offset, SeekOrigin.Begin);
                 return outputImageBuffer.ReadByte();
             };
-                    setAction = (offset, val) => inputImageBuffer.Write(BigEndianBitConverter.GetBytes((byte)val), offset, 8);
+                    setAction = (offset, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((byte)val)));
                    break;
 
             }
@@ -195,6 +190,7 @@ namespace PLCSimConnector
         public void UpdateOutputImage()
         {
             object pData = null;
+            //int max = dataPointList.MaxReadOffset();
             int max = dataPointList.Max(item => item.Offset);
             SimPLC.ReadOutputImage(0, max+8, ImageDataTypeConstants.S7Byte, ref pData);
             var byteData = (byte[])pData;
@@ -204,8 +200,15 @@ namespace PLCSimConnector
         }
         public void UpdateInputImage()
         {
-            object pData = inputImageBuffer.GetBuffer();
-            SimPLC.WriteInputImage(0, ref pData); 
+            var writePoints = dataPointList.WriteDataPoints;
+            while (writePoints.Count > 0)
+            {
+                var point = writePoints.Pop();
+                object buf = point.Buffer;
+                SimPLC.WriteInputImage(point.AddressStart, ref buf);
+                //SimPLC.WriteInputPoint(point.AddressStart,0,ref buf);
+            }
+
         }
 
         #region DestructorAndDispose
@@ -248,7 +251,8 @@ namespace PLCSimConnector
                     // Dispose managed resources.
                     ////component.Dispose();
                     outputImageBuffer.Dispose();
-                    inputImageBuffer.Dispose();
+                    Trace.Flush();
+                    Trace.Close();
                     SimPLC = null;
                     Project = null;
                 }

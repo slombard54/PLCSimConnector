@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 
 namespace PLCSimConnector.DataPoints
@@ -9,6 +10,12 @@ namespace PLCSimConnector.DataPoints
     public class PLCDataPoints : IEnumerable<IPLCDataPoint>
     {
         private readonly List<IPLCDataPoint> dataPoints;
+        private readonly Stack<WritePLCDataPoint> writeDataPoints;
+
+        public Stack<WritePLCDataPoint> WriteDataPoints
+        {
+            get { return writeDataPoints; }
+        }
 
         public List<IPLCDataPoint> DataPoints
         {
@@ -17,15 +24,17 @@ namespace PLCSimConnector.DataPoints
 
 
         public PLCDataPoints()
-        {
+        {   
             dataPoints = new List<IPLCDataPoint>();
+            writeDataPoints = new Stack<WritePLCDataPoint>();
+            int i = writeDataPoints.Count;
         }
-        
+
         public IEnumerator<IPLCDataPoint> GetEnumerator()
         {
             return dataPoints.GetEnumerator();
         }
-
+        
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
@@ -57,6 +66,11 @@ namespace PLCSimConnector.DataPoints
         {
             dataPoints.Add(item);
             dataPoints.Sort();
+        }
+
+        public int MaxReadOffset()
+        {
+            return dataPoints.Max(item => item.Offset);
         }
     }
 }

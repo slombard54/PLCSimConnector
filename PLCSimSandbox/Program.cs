@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using PLCSimConnector;
 using DotNetSiemensPLCToolBoxLibrary.DataTypes.Projectfolders;
@@ -10,6 +11,7 @@ namespace PLCSimSandbox
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Console.WriteLine("Sandbox app to test PLCSimConnector.dll");
@@ -31,9 +33,16 @@ namespace PLCSimSandbox
                         }
                     case 'r':
                         {
-                            plc.OutputImageOffestRequest(70);
                             plc.UpdateImages();
                             object z = c.ReadOutputImage(10, 20);
+                            break;
+                        }
+                    case 'w':
+                        {
+                            c.Connect();
+                            bool b = true;
+                            Object z = b;
+                            c.WriteInputPoint(0, 0, ref z);
                             break;
                         }
                     case 'p':

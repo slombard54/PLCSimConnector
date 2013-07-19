@@ -79,7 +79,7 @@ namespace PLCSimConnector.DataPoints
         unsafe public static void WriteBE(this byte[] buffer, float value, int offset = 0)
         {
 
-            WriteBE(buffer, (int)&value, offset);
+            WriteBE(buffer, *(int*)&value, offset);
             
         }
         unsafe public static void WriteBE(this byte[] buffer, int value, int offset = 0)

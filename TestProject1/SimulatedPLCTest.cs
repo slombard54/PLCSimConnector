@@ -179,10 +179,11 @@ namespace TestProject1
                 float engLow = 0; 
                 float rawHi = 4; 
                 float rawLow = 20; 
-                var actual = (PLCDataPoint) target.AddScaledDataPoint(point, engHi, engLow, rawHi, rawLow);
-                var lactual = target.AddScaledDataPoint("ToTest", engHi, engLow, rawHi, rawLow);
-                lactual = target.AddScaledDataPoint("ToTest", engHi, engLow, rawHi, rawLow);
-                lactual = target.AddScaledDataPoint("ToTest", engHi, engLow, rawHi, rawLow);
+                var actual = (PLCDataPoint) target.AddDataPoint(point);
+                var i = actual.Offset;
+                actual.DataPointScaling(engHi, engLow, rawHi, rawLow);
+                var lactual = (PLCDataPoint)target.AddDataPoint("ToTest");
+                lactual.DataPointScaling(engHi, engLow, rawHi, rawLow);
                 Assert.IsNotNull(actual);
                 Assert.AreEqual(point, actual.Symbol);
                 /*Assert.AreEqual(engHi, actual.ScaleEngHigh);
@@ -209,7 +210,8 @@ namespace TestProject1
                 float engLow = 0;
                 float rawHi = 4;
                 float rawLow = 20;
-                var actual = (PLCDataPoint) target.AddScaledDataPoint(point, engHi, engLow, rawHi, rawLow);
+                var actual = (PLCDataPoint) target.AddDataPoint(point);
+                actual.DataPointScaling( engHi, engLow, rawHi, rawLow);
                 Assert.IsNotNull(actual);
                 Assert.AreEqual(point, actual.Symbol);
                 /*Assert.AreEqual(engHi, actual.ScaleEngHigh);
