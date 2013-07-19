@@ -62,7 +62,8 @@
   <ItemGroup>
     <Compile Include="DataPoints\BigEndianBitConverter.cs" />
     <Compile Include="DataPoints\IPLCDataPoint.cs" />
-    <Compile Include="DataPoints\WritePLCDataPoint.cs" />
+    <Compile Include="DataPoints\WritePLCDataBits.cs" />
+    <Compile Include="DataPoints\WritePLCDataBytes.cs" />
     <Compile Include="PCS7Project.cs" />
     <Compile Include="DataPoints\PLCDataPoint.cs" />
     <Compile Include="DataPoints\PLCDataPoints.cs" />

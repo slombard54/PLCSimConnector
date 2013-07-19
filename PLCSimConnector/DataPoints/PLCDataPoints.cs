@@ -10,9 +10,14 @@ namespace PLCSimConnector.DataPoints
     public class PLCDataPoints : IEnumerable<IPLCDataPoint>
     {
         private readonly List<IPLCDataPoint> dataPoints;
-        private readonly Stack<WritePLCDataPoint> writeDataPoints;
+        private readonly Stack<WritePLCDataBytes> writeDataPoints;
+        private readonly Stack<WritePLCDataBits> writeDataBits;
 
-        public Stack<WritePLCDataPoint> WriteDataPoints
+        public Stack<WritePLCDataBits> WriteDataBits
+        {
+            get { return writeDataBits; }
+        }
+        public Stack<WritePLCDataBytes> WriteDataPoints
         {
             get { return writeDataPoints; }
         }
@@ -26,8 +31,10 @@ namespace PLCSimConnector.DataPoints
         public PLCDataPoints()
         {   
             dataPoints = new List<IPLCDataPoint>();
-            writeDataPoints = new Stack<WritePLCDataPoint>();
+            writeDataPoints = new Stack<WritePLCDataBytes>();
+            writeDataBits = new Stack<WritePLCDataBits>();
             int i = writeDataPoints.Count;
+            i = writeDataBits.Count;
         }
 
         public IEnumerator<IPLCDataPoint> GetEnumerator()

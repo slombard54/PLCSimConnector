@@ -2,7 +2,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Text.RegularExpressions;
 using DotNetSiemensPLCToolBoxLibrary.DataTypes.Projectfolders;
 
@@ -10,13 +9,13 @@ using DotNetSiemensPLCToolBoxLibrary.DataTypes.Projectfolders;
 
 namespace PLCSimConnector.DataPoints
 {
-    public delegate dynamic GetValue(int offset);
+    public delegate dynamic GetValue(PLCDataPoint dataPoint);
 
     public delegate dynamic PostGetValue(dynamic value);
 
     public delegate dynamic PreSetValue(dynamic setValue);
 
-    public delegate void SetValue(int offset, dynamic setValue);
+    public delegate void SetValue(PLCDataPoint dataPoint, dynamic setValue);
 
     public class PLCDataPoint : IPLCDataPoint, IComparable<PLCDataPoint>
     {
@@ -50,13 +49,18 @@ namespace PLCSimConnector.DataPoints
 
         public virtual dynamic Value
         {
-            get { return ValuePostGetAction(ValueGetAction(Offset)); }
-            set { ValueSetAction(offset, ValuePreSetAction(value)); }
+            get { return ValuePostGetAction(ValueGetAction(this)); }
+            set { ValueSetAction(this, ValuePreSetAction(value)); }
         }
 
         public int Bit
         {
-            get { return bit; }
+            get
+            {
+                if (bit != -1) return bit;
+                ParseAddress();
+                return bit;
+            }
         }
 
         public string Symbol { get; set; }
@@ -67,12 +71,8 @@ namespace PLCSimConnector.DataPoints
         {
             get
             {
-                var m = Regex.Matches(Address, @"(\d+)(?:\.(\d*))?$");
-                if (offset == -1)
-                {
-                    offset = Convert.ToInt32(m[0].ToString());
-                    //new string(Address.ToCharArray().Where(Char.IsDigit).ToArray()));
-                }
+                if (offset != -1) return offset;
+                ParseAddress();
                 return offset;
             }
         }
@@ -107,6 +107,13 @@ namespace PLCSimConnector.DataPoints
                     Symbol = entry.Symbol
                 };
             return temp;
+        }
+
+        private void ParseAddress()
+        {
+            var m = Regex.Match(Address, @"(?<offset>\d+)(?:\.(?<bit>\d*))?$");
+            offset = Convert.ToInt32(m.Groups["offset"].Value);
+            bit = m.Groups["bit"].Value.Length > 0 ? Convert.ToInt32(m.Groups["bit"].Value) : 0;
         }
         
     }

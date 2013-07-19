@@ -3,9 +3,9 @@ using System.Collections;
 
 namespace PLCSimConnector.DataPoints
 {
-    public class WritePLCDataPoint : IComparable<WritePLCDataPoint>
+    public class WritePLCDataBytes : IComparable<WritePLCDataBytes>
     {
-        public WritePLCDataPoint(int address, byte[] getBytes)
+        public WritePLCDataBytes(int address, byte[] getBytes)
         {
             AddressStart = address;
             AddressEnd = address + getBytes.Length;
@@ -18,7 +18,7 @@ namespace PLCSimConnector.DataPoints
 
         public byte[] Buffer { get; set; }
 
-        public int CompareTo(WritePLCDataPoint other)
+        public int CompareTo(WritePLCDataBytes other)
         {
             throw new NotImplementedException();
         }

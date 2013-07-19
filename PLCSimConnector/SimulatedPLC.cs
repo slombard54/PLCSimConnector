@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Collections;
 using PLCSimConnector.DataPoints;
 using S7PROSIMLib;
 
@@ -44,7 +42,7 @@ namespace PLCSimConnector
             {
                 throw new ApplicationException("Failure to setup Trace Listener", ex);
             }
-            Trace.WriteLine("{0} simulatedPLC object created trace started.",DateTime.Now.ToString(CultureInfo.CurrentCulture));
+            Trace.WriteLine("SimulatedPLC object created trace started.", DateTime.Now.ToString(CultureInfo.CurrentCulture));
         }
 
         
@@ -110,6 +108,11 @@ namespace PLCSimConnector
                             dataType = "BYTE";
                             break;
                         }
+                    default:
+                        {
+                            if (point.Contains(".")) dataType = "BOOL";
+                            break;
+                        }
                 }
 
                 dataPoint = new PLCDataPoint { Address = point, Symbol = point, DataType = dataType };
@@ -133,33 +136,43 @@ namespace PLCSimConnector
 
             GetValue getAction = offset => 0;
             SetValue setAction = (offset, value) => { };
-            switch(dataPoint.DataType)
+            switch(dataPoint.DataType.ToUpper())
             {
                 case "WORD":
-                    getAction = outputImageBuffer.ToBEInt16;
-                    setAction = (offset, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((Int16)val)));
+                    getAction = item => outputImageBuffer.ToBEInt16(item.Offset);
+                    setAction = (item, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataBytes(item.Offset, BigEndianBitConverter.GetBytes((Int16)val)));
                     break;
 
                 case "DWORD":
-                    getAction = outputImageBuffer.ToBEInt32;
-                    setAction = (offset,val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((int)val)));
+                    getAction = item => outputImageBuffer.ToBEInt32(item.Offset);
+                    setAction = (item,val) => dataPointList.WriteDataPoints.Push(new WritePLCDataBytes(item.Offset, BigEndianBitConverter.GetBytes((int)val)));
                     break;
 
                 case "REAL":
-                    getAction = outputImageBuffer.ToBESingle;
-                    setAction = (offset, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((float)val)));
+                    getAction = item => outputImageBuffer.ToBESingle(item.Offset);
+                    setAction = (item, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataBytes(item.Offset, BigEndianBitConverter.GetBytes((float)val)));
                     break;
 
                 case "BYTE":
-                    getAction = offset =>
-            {
-                outputImageBuffer.Seek(offset, SeekOrigin.Begin);
-                return outputImageBuffer.ReadByte();
-            };
-                    setAction = (offset, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataPoint(offset, BigEndianBitConverter.GetBytes((byte)val)));
-                   break;
+                    getAction = item => outputImageBuffer.ToBEByte(item.Offset);
+                    setAction = (item, val) => dataPointList.WriteDataPoints.Push(new WritePLCDataBytes(item.Offset, BigEndianBitConverter.GetBytes((byte)val)));
+                    break;
+                case "BOOL":
+                    getAction = item =>
+                        {
+                            byte by = outputImageBuffer.ToBEByte(item.Offset);
+                            byte bit = (byte)((by >> item.Bit) & 0x01);
+                            return bit;
+                        };
+                    setAction = (item, val) => dataPointList.WriteDataBits.Push(new WritePLCDataBits(item.Offset, item.Bit, Convert.ToBoolean(val)));
 
+                    break;
+                default:
+                    Trace.TraceWarning("Unknown data type for point {1] unable to register read write actions {0}", dataPoint.DataType, point );
+
+                    break;
             }
+
             switch (dataPoint.Address.Trim().ToUpper().First())
             {
                 case 'Q':
@@ -208,6 +221,15 @@ namespace PLCSimConnector
                 SimPLC.WriteInputImage(point.AddressStart, ref buf);
                 //SimPLC.WriteInputPoint(point.AddressStart,0,ref buf);
             }
+            var writeBits = dataPointList.WriteDataBits;
+            while (writeBits.Count > 0)
+            {
+                var point = writeBits.Pop();
+                object buf = point.Buffer;
+                //SimPLC.WriteInputImage(point.Address, ref buf);
+                SimPLC.WriteInputPoint(point.Address,point.Bit,ref buf);
+            }
+
 
         }
 

@@ -34,6 +34,18 @@ namespace PLCSimConnector.DataPoints
             }
         }
 
+        unsafe public static byte ToByte(Byte[] array, int index)
+        {
+            if (array == null) throw new ArgumentNullException("array");
+            if (index >= array.Length) throw new ArgumentOutOfRangeException("index", "index not in array");
+            if (index > array.Length - 1) throw new ArgumentOutOfRangeException("index", "index to large for type");
+
+            fixed (byte* pbyte = &array[index])
+            {
+                return *(pbyte);
+            }
+        }
+
         public static byte[] GetBytes(int value)
         {
             var bytes = new byte[4];
@@ -74,6 +86,11 @@ namespace PLCSimConnector.DataPoints
         public static dynamic ToBEInt16(this MemoryStream s, int offset)
         {
             return ToInt16(s.GetBuffer(), offset);
+        }
+
+        public static dynamic ToBEByte(this MemoryStream s, int offset)
+        {
+            return ToByte(s.GetBuffer(), offset);
         }
 
         unsafe public static void WriteBE(this byte[] buffer, float value, int offset = 0)

@@ -182,8 +182,9 @@ namespace TestProject1
                 var actual = (PLCDataPoint) target.AddDataPoint(point);
                 var i = actual.Offset;
                 actual.DataPointScaling(engHi, engLow, rawHi, rawLow);
-                var lactual = (PLCDataPoint)target.AddDataPoint("ToTest");
+                var lactual = (PLCDataPoint)target.AddDataPoint("IB 456.1");
                 lactual.DataPointScaling(engHi, engLow, rawHi, rawLow);
+                i = lactual.Offset;
                 Assert.IsNotNull(actual);
                 Assert.AreEqual(point, actual.Symbol);
                 /*Assert.AreEqual(engHi, actual.ScaleEngHigh);
