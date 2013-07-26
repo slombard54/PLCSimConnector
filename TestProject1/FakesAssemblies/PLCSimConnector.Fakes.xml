@@ -709,6 +709,9 @@
         <member name="P:PLCSimConnector.Fakes.ShimPLCSim.ReadOutputImageInt32Int32ImageDataTypeConstants">
             <summary>Sets the shim of PLCSim.ReadOutputImage(Int32 startIndex, Int32 elementsToRead, ImageDataTypeConstants dataType)</summary>
         </member>
+        <member name="P:PLCSimConnector.Fakes.ShimPLCSim.SetScanModeInt32">
+            <summary>Sets the shim of PLCSim.SetScanMode(Int32 newMode)</summary>
+        </member>
         <member name="P:PLCSimConnector.Fakes.ShimPLCSim.ps_ConnectionErrorStringInt32">
             <summary>Sets the shim of PLCSim.ps_ConnectionError(String controlEngine, Int32 error)</summary>
         </member>
@@ -726,6 +729,9 @@
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimPLCSim.AllInstances.ReadOutputImageInt32Int32ImageDataTypeConstants">
             <summary>Sets the shim of PLCSim.ReadOutputImage(Int32 startIndex, Int32 elementsToRead, ImageDataTypeConstants dataType)</summary>
+        </member>
+        <member name="P:PLCSimConnector.Fakes.ShimPLCSim.AllInstances.SetScanModeInt32">
+            <summary>Sets the shim of PLCSim.SetScanMode(Int32 newMode)</summary>
         </member>
         <member name="T:PLCSimConnector.Fakes.ShimSimulatedPLC">
             <summary>Shim type of PLCSimConnector.SimulatedPLC</summary>

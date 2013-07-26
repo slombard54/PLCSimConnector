@@ -5,16 +5,23 @@ using S7PROSIMLib;
 namespace PLCSimConnector
 {
 
+
+
     public class PLCSim : S7ProSimClass, IDisposable
     {
         private bool disposed;
-
+        
 
 
         public PLCSim()
         {
             var connectionErrorHandler = new IS7ProSimEvents_ConnectionErrorEventHandler(ps_ConnectionError);
             base.ConnectionError += connectionErrorHandler;
+        }
+
+        public void SetScanMode(int newMode)
+        {
+            SetScanMode((ScanModeConstants)newMode);
         }
 
         public static void ps_ConnectionError(string controlEngine, int error)
