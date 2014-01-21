@@ -22,6 +22,9 @@
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.Behavior">
             <summary>Assigns the behavior for all methods of the shimmed type</summary>
         </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.GetBytesByte">
+            <summary>Sets the shim of BigEndianBitConverter.GetBytes(Byte value)</summary>
+        </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.GetBytesInt16">
             <summary>Sets the shim of BigEndianBitConverter.GetBytes(Int16 value)</summary>
         </member>
@@ -54,6 +57,9 @@
         </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.ToSingleByteArrayInt32">
             <summary>Sets the shim of BigEndianBitConverter.ToSingle(Byte[] array, Int32 index)</summary>
+        </member>
+        <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.WriteBEByteArrayByteInt32">
+            <summary>Sets the shim of BigEndianBitConverter.WriteBE(Byte[] buffer, Byte value, Int32 offset)</summary>
         </member>
         <member name="P:PLCSimConnector.DataPoints.Fakes.ShimBigEndianBitConverter.WriteBEByteArrayInt16Int32">
             <summary>Sets the shim of BigEndianBitConverter.WriteBE(Byte[] buffer, Int16 value, Int32 offset)</summary>
@@ -628,6 +634,9 @@
         <member name="P:PLCSimConnector.Fakes.ShimPCS7Project.FileSetString">
             <summary>Sets the shim of PCS7Project.set_File(String value)</summary>
         </member>
+        <member name="P:PLCSimConnector.Fakes.ShimPCS7Project.GetDataSymbols">
+            <summary>Sets the shim of PCS7Project.GetDataSymbols()</summary>
+        </member>
         <member name="P:PLCSimConnector.Fakes.ShimPCS7Project.GetOutputImageSymbols">
             <summary>Sets the shim of PCS7Project.GetOutputImageSymbols()</summary>
         </member>
@@ -636,6 +645,15 @@
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimPCS7Project.PCS7SymbolTableGet">
             <summary>Sets the shim of PCS7Project.get_PCS7SymbolTable()</summary>
+        </member>
+        <member name="P:PLCSimConnector.Fakes.ShimPCS7Project._GetDataSymbolsb__6SymbolTableEntry">
+            <summary>Sets the shim of PCS7Project.&lt;GetDataSymbols&gt;b__6(SymbolTableEntry sym)</summary>
+        </member>
+        <member name="P:PLCSimConnector.Fakes.ShimPCS7Project._GetDataSymbolsb__7SymbolTableEntry">
+            <summary>Sets the shim of PCS7Project.&lt;GetDataSymbols&gt;b__7(SymbolTableEntry sym)</summary>
+        </member>
+        <member name="P:PLCSimConnector.Fakes.ShimPCS7Project._GetDataSymbolsb__8SymbolTableEntry">
+            <summary>Sets the shim of PCS7Project.&lt;GetDataSymbols&gt;b__8(SymbolTableEntry sym)</summary>
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimPCS7Project._GetOutputImageSymbolsb__0SymbolTableEntry">
             <summary>Sets the shim of PCS7Project.&lt;GetOutputImageSymbols&gt;b__0(SymbolTableEntry sym)</summary>
@@ -654,6 +672,9 @@
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimPCS7Project.AllInstances.FileSetString">
             <summary>Sets the shim of PCS7Project.set_File(String value)</summary>
+        </member>
+        <member name="P:PLCSimConnector.Fakes.ShimPCS7Project.AllInstances.GetDataSymbols">
+            <summary>Sets the shim of PCS7Project.GetDataSymbols()</summary>
         </member>
         <member name="P:PLCSimConnector.Fakes.ShimPCS7Project.AllInstances.GetOutputImageSymbols">
             <summary>Sets the shim of PCS7Project.GetOutputImageSymbols()</summary>
