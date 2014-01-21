@@ -58,6 +58,13 @@ namespace PLCSimConnector
 
             return returnString;
         }
+
+        public string[] GetDataSymbols()
+        {
+            string[] returnString = PCS7SymbolTable.SymbolTableEntrys.Where(sym => true).OrderBy(sym => sym.Symbol).Select(sym => sym.Symbol).ToArray();
+
+            return returnString;
+        }
     }
 
 }

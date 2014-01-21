@@ -60,6 +60,13 @@ namespace PLCSimConnector.DataPoints
             return bytes;
         }
 
+        public static byte[] GetBytes(byte value)
+        {
+            var bytes = new byte[1];
+            bytes.WriteBE(value);
+            return bytes;
+        }
+
         public static byte[] GetBytes(float value)
         {                       
             var bytes = new byte[4];
@@ -117,6 +124,11 @@ namespace PLCSimConnector.DataPoints
                 var pbyte = (byte*) &value;
                 *((int*) b) = ((*(pbyte) << 8) | (*(pbyte + 1)));
             }
+        }
+
+        public static void WriteBE(this byte[] buffer, byte value, int offset = 0)
+        {
+            buffer[offset] = value;
         }
     }
 }

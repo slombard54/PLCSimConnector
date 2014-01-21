@@ -92,7 +92,7 @@ namespace PLCSimConnector
                 Debug.Print("Address Detected");
 
                 string dataType = "";
-                switch (point.Substring(2,1))
+                switch (point.Substring(1,1))
                 {
                     case "D":
                         {
